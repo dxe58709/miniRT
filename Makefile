@@ -6,11 +6,11 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/06/24 00:23:02 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/06/24 00:25:17 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME = minirt
 
 INCLUDES = -I ./includes -I ./srcs
 CC = cc
