@@ -6,26 +6,27 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/06/22 20:51:45 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/06/24 00:23:02 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-
-# Libft+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-LIBDIR = ./srcs/libft
-LIBFT = $(LIBDIR)/libft.a
 
 INCLUDES = -I ./includes -I ./srcs
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRCS = 
+SRCS =	srcs/vector/vector.c \
+		srcs/vector/set_vec.c \
+		srcs/vector/arithmetics.c \
+		#srcs/main.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
-all: $(LIBFT) $(NAME)
+LIBFT = libft.a
+
+all: $(NAME)
 
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
@@ -38,9 +39,11 @@ $(LIBFT):
 
 clean:
 	$(RM) $(OBJS) $(LIBFT)
+	@cd srcs && cd libft && make clean
 
 fclean: clean
 	$(RM) $(NAME)
+	@cd srcs && cd libft && make fclean
 
 re: fclean all
 
