@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/06/24 00:13:19 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:35:03 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_rgb
 
 typedef struct s_ray
 {
-    t_vec	start;
-    t_vec	direction;//方向ベクトル
+	t_vec	start;
+	t_vec	direction;//方向ベクトル
 }	t_ray;
 
 typedef struct s_basis
@@ -56,23 +56,23 @@ typedef struct s_basis
 
 typedef struct s_plane
 {
-    t_vec	vertical;//垂直ベクトル
-    t_vec	position;//平面上のある点の位置ベクトル
-    t_basis	basis;//平面の基底
+	t_vec	vertical;//垂直ベクトル
+	t_vec	position;//平面上のある点の位置ベクトル
+	t_basis	basis;//平面の基底
 }	t_plane;
 
 typedef struct s_sphere
 {
-    t_vec	center;//球の中心
-    double	radius;//半径
+	t_vec	center;//球の中心
+	double	radius;//半径
 }	t_sphere;
 
 typedef struct s_cylinder
 {
-    t_vec	position;
-    t_vec	direction;
-    double	radius;//円柱の半径
-    double	height;
+	t_vec	position;
+	t_vec	direction;
+	double	radius;//円柱の半径
+	double	height;
 }	t_cylinder;
 
 #endif

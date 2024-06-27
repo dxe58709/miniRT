@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:43:36 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/06/24 00:18:58 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:34:31 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ double	inner_vec(t_vec a, t_vec b);
 t_vec	outer_vec(t_vec a, t_vec b);
 t_vec	mult_vec(t_vec a, double b);
 
-//
+//set_vec
+int		set_vec(t_vec *vec, char *str);
+
 #endif

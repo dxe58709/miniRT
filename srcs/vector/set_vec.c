@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 23:41:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/06/24 00:12:29 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:40:24 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ int	set_vec(t_vec *vec, char *str)
 	char	**xyz;
 
 	xyz = NULL;
-	if (!(xyz = ft_split(str, ',')) || ptr_len((void**)xyz) != 3)
+	xyz = ft_split(str, ',');
+	if (!xyz || ptr_len((void **)xyz) != 3)
 	{
 		printf("input str: %s\n", str);
-		free_ptr((void**)xyz);
+		free_ptr((void **)xyz);
 		return (1);
 	}
 	vec->x = ft_atof(xyz[0]);
