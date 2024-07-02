@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/06/24 00:25:17 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/07/02 15:52:55 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ RM = rm -f
 SRCS =	srcs/vector/vector.c \
 		srcs/vector/set_vec.c \
 		srcs/vector/arithmetics.c \
-		#srcs/main.c \
+		srcs/main.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
-LIBFT = libft.a
+LIBDIR = ./srcs/libft
+LIBFT = $(LIBDIR)/libft.a
 
 all: $(NAME)
 
@@ -35,15 +36,15 @@ $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBDIR) all
+	$(MAKE) -C $(LIBDIR)
 
 clean:
 	$(RM) $(OBJS) $(LIBFT)
-	@cd srcs && cd libft && make clean
+	@$(MAKE) -C $(LIBDIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
-	@cd srcs && cd libft && make fclean
+	@$(MAKE) -C $(LIBDIR) fclean
 
 re: fclean all
 
@@ -54,7 +55,7 @@ __debug_configure__:
 debug: fclean __debug_configure__ all
 
 norminette: $(SRCS)
-	norminette $^ minishell.h
+	norminette $^ minirt.h
 
 norm: norminette
 

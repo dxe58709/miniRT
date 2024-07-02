@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atof.c                                             :+:      :+:    :+:   */
+/*   sf_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 21:00:30 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/06/22 21:00:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:56:32 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../../includes/minirt.h"
+
+static void	ft_error(void)
+{
+	printf("atof is error.\n");
+	exit(-1);
+}
 
 static int	skip_sp_sign(const char *str, int *sign)
 {
