@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   color_arithmetics.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 19:41:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/03 16:56:24 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/03 17:41:18 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/03 17:58:08 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "color.h"
 
-static void	close_window(t_vars *vars)
+t_rgb	color_add(t_rgb a, t_rgb b)
 {
-	mlx_destroy_image(vars->mlx, vars->img);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	exit(0);
+	return (color_init(a.red + b.red, a.green + b.green, a.blue + b.blue));
 }
 
-int	close_window_esc(int keycode, t_vars *vars)
+t_rgb	color_mult(t_rgb a, t_rgb b)
 {
-	if (keycode == 53)
-	{
-		close_window(vars);
-		free_scene();
-	}
-	return (0);
+	return (color_init(a.red * b.red, a.green * b.green, a.blue * b.blue));
 }
 
-int	close_window_x(t_vars *vars)
+t_rgb	color_mult_scalar(t_rgb a, double b)
 {
-	close_window(vars);
-	return (0);
+	return (color_init(a.red * b, a.green * b, a.blue * b));
 }
