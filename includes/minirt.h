@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/06/27 18:35:03 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:06:07 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define MINIRT_H
 
 # include "../srcs/libft/libft.h"
+# include "../minilibx_mms_20200219/mlx.h"
 # include "vector.h"
+# include "light.h"
+# include "shape.h"
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
@@ -33,46 +36,19 @@
 
 # define ERR_ARGC	"wrong argc."
 
-//color
-typedef struct s_rgb
+typedef struct s_vars
 {
-	double	red;
-	double	green;
-	double	blue;
-}	t_rgb;
-
-typedef struct s_ray
-{
-	t_vec	start;
-	t_vec	direction;//方向ベクトル
-}	t_ray;
-
-typedef struct s_basis
-{
-	t_vec	c;
-	t_vec	u;
-	t_vec	v;
-}	t_basis;
-
-typedef struct s_plane
-{
-	t_vec	vertical;//垂直ベクトル
-	t_vec	position;//平面上のある点の位置ベクトル
-	t_basis	basis;//平面の基底
-}	t_plane;
-
-typedef struct s_sphere
-{
-	t_vec	center;//球の中心
-	double	radius;//半径
-}	t_sphere;
-
-typedef struct s_cylinder
-{
-	t_vec	position;
-	t_vec	direction;
-	double	radius;//円柱の半径
-	double	height;
-}	t_cylinder;
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	double	window_width;
+	double	window_height;
+	int		bits_par_pixel;
+	int		bytes_par_pixel;
+	int		bytes_par_line;
+	int		endian;
+	t_scene	*scene;
+}	t_vars;
 
 #endif
