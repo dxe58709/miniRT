@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/03 14:06:07 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:07:49 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,9 @@ typedef struct s_vars
 	int		endian;
 	t_scene	*scene;
 }	t_vars;
+
+//close
+int	close_window_esc(int keycode, t_vars *vars);
+int	close_window_x(t_vars *vars);
 
 #endif
