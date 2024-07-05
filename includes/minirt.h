@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/04 17:07:49 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:17:13 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,15 @@ typedef struct s_vars
 }	t_vars;
 
 //close
-int	close_window_esc(int keycode, t_vars *vars);
-int	close_window_x(t_vars *vars);
+int		close_window_esc(int keycode, t_vars *vars);
+int		close_window_x(t_vars *vars);
+
+//mlx
+void	init_mlx(t_vars *vars, char *style);
+void	pixel_put(t_vars *vars, int x, int y, int color);
+void	set_hook(t_vars *vars);
+
+//error
+void	print_error(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:41:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/03 16:56:24 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:04:12 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	close_window_esc(int keycode, t_vars *vars)
 int	close_window_x(t_vars *vars)
 {
 	close_window(vars);
+	free_scene();
 	return (0);
 }
