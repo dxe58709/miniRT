@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/03 14:29:03 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:54:19 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ typedef struct s_cylinder
 
 typedef struct s_plane
 {
-	t_vec			position;//平面上のある点の位置ベクトル
-	t_vec			vertical;//垂直ベクトル
-	t_coordinate	basis;//平面の基底
+	t_vec	position;//平面上のある点の位置ベクトル
+	t_vec	vertical;//垂直ベクトル
+	t_basis	basis;//平面の基底
 }	t_plane;
 
 typedef struct s_cone
@@ -62,7 +62,7 @@ typedef struct s_scene {
 	t_shape_type	type;
 	t_light			*light;
 	t_rgb			*ambients;
-	t_coordinate	basis;
+	t_basis			basis;
 	t_vec			camera_pos;
 	t_vec			camera_dir;
 	double			fov;//視野角（Field of View）

@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/05 15:17:13 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:01:50 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ int		close_window_x(t_vars *vars);
 void	init_mlx(t_vars *vars, char *style);
 void	pixel_put(t_vars *vars, int x, int y, int color);
 void	set_hook(t_vars *vars);
+
+//camera
+t_ray	get_camera_ray(const t_scene *scene, double u,
+			double v, double aspect);
 
 //error
 void	print_error(char *str);

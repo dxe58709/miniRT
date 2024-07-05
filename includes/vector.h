@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:43:36 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/03 14:20:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:53:42 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ typedef struct s_vec
 typedef struct s_ray
 {
 	t_vec	start;
-	t_vec	direction;//方向ベクトル
+	t_vec	direction;
 }	t_ray;
 
-typedef struct s_coordinate //座標系の回転や変換に関する情報
+typedef struct s_basis //座標系の回転や変換に関する情報
 {
 	t_vec	center;//座標系の中心点
 	t_vec	up;//座標系の上方向
 	t_vec	vertical;//座標系の垂直方向
-}	t_coordinate;
+}	t_basis;
 
 typedef struct s_intersect {
 	double	distance;
