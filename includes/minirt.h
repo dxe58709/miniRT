@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/05 17:01:50 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/11 17:46:04 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <stdbool.h>
 # include <float.h>
 # include <math.h>
+# include <errno.h>
 
 # define WINDOW_WIDTH 400
 # define WINDOW_HEIGHT 400
@@ -51,6 +52,8 @@ typedef struct s_vars
 	t_scene	*scene;
 }	t_vars;
 
+# define BUFFER_SIZE 100
+
 //close
 int		close_window_esc(int keycode, t_vars *vars);
 int		close_window_x(t_vars *vars);
@@ -65,6 +68,6 @@ t_ray	get_camera_ray(const t_scene *scene, double u,
 			double v, double aspect);
 
 //error
-void	print_error(char *str);
+void	print_error(char *msg, bool is_true);
 
 #endif

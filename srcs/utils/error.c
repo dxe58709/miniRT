@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 13:49:25 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/03 16:55:57 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/05 14:54:21 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/11 17:15:49 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// void	free_scene(t_scene *scene)
-// {
-// 	t_shape	*tmp_shape;
-// 	t_light	*tmp_light;
-
-// 	if (scene == NULL)
-// 		return ;
-// 	while (scene->shape != NULL)
-// 	{
-// 		tmp_shape = scene->shape->next;
-// 		free(scene->shape);
-// 		scene->shape = tmp_shape;
-// 	}
-// 	while (scene->light != NULL)
-// 	{
-// 		tmp_light = scene->light->next;
-// 		free(scene->light);
-// 		scene->light = tmp_light;
-// 	}
-// 	free(scene);
-// }
+void	print_error(char *msg, bool is_true)
+{
+	if (is_true && errno != 0)
+		perror(msg);
+	else
+		ft_putendl_fd(msg, STDERR_FILENO);
+	exit (EXIT_FAILURE);
+}

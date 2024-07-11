@@ -6,11 +6,12 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:06 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/05 20:16:44 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:48:15 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include <stdio.h>
 
 char	*ft_free(char *str)
 {
