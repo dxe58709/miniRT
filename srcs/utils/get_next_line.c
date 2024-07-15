@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:06 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/11 16:48:15 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:26:56 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ char	*join_line(int fd, char *line)
 	while (readbyte > 0)
 	{
 		readbyte = read(fd, buf, BUFFER_SIZE);
-	printf("[rb:%d]",readbyte);
 		if (readbyte == -1)
 			ft_free(buf);
 		buf[readbyte] = '\0';
 		tmpline = line;
-		line = ft_strjoin_gnl(line, buf);
+		line = ft_strjoin(line, buf);
 		free (tmpline);
 		if (!line)
 			return (ft_free(buf));
@@ -88,17 +87,20 @@ char	*save_tmp(char *memo)
 	return (tmp);
 }
 
-char	*get_next_line(int fd)
+bool	get_next_line(int fd, char **line)
 {
-	char		*line;
 	static char	*save;
+	char		*tmp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (NULL);
+		return (false);
 	save = join_line(fd, save);
 	if (!save)
-		return (ft_free(save));
-	line = get_line(save);
-	save = save_tmp(save);
-	return (line);
+		return (false);
+	*line = get_line(save);
+	tmp = save_tmp(save);
+	if (!*line && tmp)
+		return (false);
+	save = tmp;
+	return (true);
 }

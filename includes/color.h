@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:42:25 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/04 16:22:16 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:38:13 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ typedef struct s_rgb
 	double	blue;
 }	t_rgb;
 
+void		init_rgb(t_rgb *rgb, double r, double g, double b);
 uint32_t	encode_color(t_rgb color);
-t_rgb		set_color(t_rgb color);
-t_rgb		color_add(t_rgb a, t_rgb b);
-t_rgb		color_mult(t_rgb a, t_rgb b);
-t_rgb		color_mult_scalar(t_rgb a, double b);
+void		set_clamp_color(t_rgb color);
+void		color_add(t_rgb a, t_rgb b);
+void		color_mult(t_rgb a, t_rgb b);
+void		color_mult_scalar(t_rgb a, double b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/11 19:14:56 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:43:03 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	get_fd(char *rt)
 {
 	int		fd;
 
-	if (!is_valid_fname(rt))
+	if (!file_name(rt))
 		print_error("ERR_FNAME", false);
 	fd = open(rt, O_RDWR);
 	if (fd < 0)
@@ -46,15 +46,21 @@ static void	set_scene(t_vars *vars)
 			-1 * vars->window_width / (2 * tan(scene->fov / 360 * M_PI)));
 }
 
+// static bool	scene_setting(t_scene *scene, char *line)
+// {
+	
+// }
+
 void	init_scene(t_vars *vars, char *rt)
 {
 	int		fd;
+	char	*line;
 	t_scene	*scene;
 
 	fd = get_fd(rt);
 	scene = sf_calloc(1, sizeof(t_scene));
 	errno = 0;
-	while (get_next_line(fd))
+	while (get_next_line(fd, &line))
 	{
 		//scene_settingじゃなかったらエラー
 		//free_scene

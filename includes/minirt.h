@@ -6,19 +6,21 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/11 17:46:04 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:58:16 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include "../srcs/libft/libft.h"
+# include "../libft/libft.h"
 # include "../minilibx_mms_20200219/mlx.h"
 # include "vector.h"
 # include "light.h"
+# include "color.h"
 # include "shape.h"
 # include <stdlib.h>
+# include <fcntl.h>
 # include <limits.h>
 # include <unistd.h>
 # include <stddef.h>
@@ -57,17 +59,25 @@ typedef struct s_vars
 //close
 int		close_window_esc(int keycode, t_vars *vars);
 int		close_window_x(t_vars *vars);
+void	close_window(t_vars *vars);
 
 //mlx
 void	init_mlx(t_vars *vars, char *style);
 void	pixel_put(t_vars *vars, int x, int y, int color);
 void	set_hook(t_vars *vars);
+void	img_put(t_vars *vars);
 
 //camera
 t_ray	get_camera_ray(const t_scene *scene, double u,
 			double v, double aspect);
 
-//error
+//utils
 void	print_error(char *msg, bool is_true);
+bool	get_next_line(int fd, char **line);
+void	free_scene(t_scene *scene);
+
+//scene
+char	*file_name(char *rt);
+
 
 #endif

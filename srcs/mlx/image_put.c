@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:06:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/11 18:39:31 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:40:07 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_vec	camera_direction(t_vars *vars, int x, int y)
 			));
 }
 
-int	img_put(t_vars *vars)
+void	img_put(t_vars *vars)
 {
 	int		x;
 	int		y;
@@ -50,7 +50,7 @@ int	img_put(t_vars *vars)
 			//視点位置から点(x,y)に向かう半直線と物体との交差判定を行う
 			camera.start = vars->scene->camera_pos;
 			camera.direction = camera_direction(vars, x, y);
-			set_color(&rgb);//色０にセットできてないかも
+			init_rgb(&rgb, 0, 0, 0);
     // if (半直線が物体と交差する場合)
     // {
     //   if ( 物体の交点と公言の間に他の物体がない )
@@ -67,5 +67,4 @@ int	img_put(t_vars *vars)
 		y++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
-	return (0);
 }

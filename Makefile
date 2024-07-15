@@ -6,47 +6,69 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/07/02 15:52:55 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/07/15 11:29:54 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
-INCLUDES = -I ./includes -I ./srcs
+MLXDIR = ./minilibx_mms_20200219
+MLX = $(MLXDIR)/libmlx.a
+
+LIBDIR = ./libft
+LIBFT = $(LIBDIR)/libft.a
+
+INCLUDES = -I ./includes -I ./srcs -I $(MLXDIR) 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRCS =	srcs/vector/vector.c \
+SRCS =	srcs/utils/get_next_line.c \
+		srcs/utils/error.c \
+		srcs/utils/free.c \
+		srcs/main.c \
+		srcs/scene/init/init_scene.c \
+		srcs/scene/init/init_scene_utils.c \
+		srcs/scene/init/init_shape.c \
+		srcs/scene/camera.c \
+		srcs/vector/vector.c \
 		srcs/vector/set_vec.c \
 		srcs/vector/arithmetics.c \
-		srcs/main.c \
+		srcs/mlx/close_window.c \
+		srcs/mlx/pixel_put.c \
+		srcs/mlx/init_mlx.c \
+		srcs/mlx/set_hook.c \
+		srcs/mlx/image_put.c \
+		srcs/color/set_color.c \
+		srcs/color/color.c
 
 OBJS = $(SRCS:%.c=%.o)
-
-LIBDIR = ./srcs/libft
-LIBFT = $(LIBDIR)/libft.a
 
 all: $(NAME)
 
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBDIR)
 
+$(MLX):
+	$(MAKE) -C $(MLXDIR)
+
 clean:
-	$(RM) $(OBJS) $(LIBFT)
+	$(RM) $(OBJS)
 	@$(MAKE) -C $(LIBDIR) clean
+	@$(MAKE) -C $(MLXDIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
 	@$(MAKE) -C $(LIBDIR) fclean
+	@$(MAKE) -C $(MLXDIR) fclean
 
-re: fclean all
+fe: fclean all
 
 __debug_configure__:
 	$(eval CC := gcc)

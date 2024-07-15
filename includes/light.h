@@ -6,21 +6,15 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:54:55 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/03 14:12:32 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:26:37 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIGHT_H
 # define LIGHT_H
 
+# include "color.h"
 # include "minirt.h"
-
-typedef struct s_rgb
-{
-	double	red;
-	double	green;
-	double	blue;
-}	t_rgb;
 
 typedef enum e_light_type {
 	LT_POINT,

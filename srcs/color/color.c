@@ -6,11 +6,18 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:03:05 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/04 16:07:50 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:34:28 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	init_rgb(t_rgb *rgb, double r, double g, double b)
+{
+	rgb->red = r;
+	rgb->green = g;
+	rgb->blue = b;
+}
 
 uint32_t	encode_color(t_rgb color)
 {
