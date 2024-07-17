@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/15 10:58:16 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:23:20 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,25 @@ typedef struct s_vars
 	int		endian;
 	t_scene	*scene;
 }	t_vars;
+
+//レイトレーシングの計算
+typedef struct s_rt_info {
+	t_vec		light;//光源から交差点へのベクトル
+	t_vec		visual;//視線ベクトル
+	t_vec		ref;//反射ベクト
+	t_ray		shadow_ray;//影の光線
+	double		dl;//距離の変数
+	double		nl_dot;//法線ベクトルと光源ベクトルの内積
+	double		vr_dot;//視線ベクトルと反射ベクトルの内積
+	double		vr_dot_pow;//内積の累乗値
+}	t_rt_info;
+
+//レイトレーシングの計算に必要なすべての情報を統合
+// typedef struct s_rt {
+// 	t_rt_info		info;
+// 	t_light			*light;
+// 	t_shape_type	type;
+// }	t_rt;
 
 # define BUFFER_SIZE 100
 

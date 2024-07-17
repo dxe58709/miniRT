@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/05 16:54:19 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/17 19:38:31 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_cylinder
 
 typedef struct s_plane
 {
-	t_vec	position;//平面上のある点の位置ベクトル
+	t_vec	point;//平面上のある点の位置ベクトル
 	t_vec	vertical;//垂直ベクトル
 	t_basis	basis;//平面の基底
 }	t_plane;
@@ -43,6 +43,12 @@ typedef struct s_cone
 	double	radius;//円錐の半径
 	double	height;
 }	t_cone;
+
+typedef struct s_intersect {
+	double	distance;
+	t_vec	position;
+	t_vec	normal;//法線ベクトル
+}	t_intersect;
 
 typedef struct s_material {
 	t_rgb	ambient_ref;//環境反射係数
@@ -67,5 +73,18 @@ typedef struct s_scene {
 	t_vec			camera_dir;
 	double			fov;//視野角（Field of View）
 }	t_scene;
+
+typedef struct s_discrim {
+	double	a;
+	double	b;
+	double	c;
+	double	discrim;
+	double	t;
+	double	t1;
+	double	t2;
+}	t_discrim;
+
+//intersection
+bool	intersection_plane(t_scene *scene, t_ray *ray, t_intersect *info);
 
 #endif

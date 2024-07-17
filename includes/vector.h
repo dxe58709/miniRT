@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:43:36 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/05 16:53:42 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:43:05 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ typedef struct s_basis //座標系の回転や変換に関する情報
 	t_vec	up;//座標系の上方向
 	t_vec	vertical;//座標系の垂直方向
 }	t_basis;
-
-typedef struct s_intersect {
-	double	distance;
-	t_vec	position;
-	t_vec	normal;
-}	t_intersect;
 
 //vector
 t_vec	init_vector(double x, double y, double z);

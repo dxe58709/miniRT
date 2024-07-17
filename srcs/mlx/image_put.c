@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:06:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/15 10:40:07 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:09:23 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	img_put(t_vars *vars)
 {
 	int		x;
 	int		y;
-	t_rgb	rgb;
+	t_rgb	color;
 	t_ray	camera;
 
 	vars->window_height = 800;
@@ -50,18 +50,9 @@ void	img_put(t_vars *vars)
 			//視点位置から点(x,y)に向かう半直線と物体との交差判定を行う
 			camera.start = vars->scene->camera_pos;
 			camera.direction = camera_direction(vars, x, y);
-			init_rgb(&rgb, 0, 0, 0);
-    // if (半直線が物体と交差する場合)
-    // {
-    //   if ( 物体の交点と公言の間に他の物体がない )
-    //     4a. シェーディングの処理を行う(図1-3a)．
-    //   else
-    //     4b. 影として扱う(図1-3b)．
-    // }
-    // else
-    // {
-    //   4c. 次の点を処理する(背景色として扱う，図1-3c)．
-    // }
+			init_rgb(&color, 0, 0, 0);
+			// raytrace(vars->scene, &camera, &color);
+			pixel_put(vars, x, y, encode_color(color));
 			x++;
 		}
 		y++;
