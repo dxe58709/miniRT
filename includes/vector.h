@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:43:36 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/17 17:43:05 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/19 16:51:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ typedef struct s_vec
 	double	y;
 	double	z;
 }	t_vec;
-
-typedef struct s_ray
-{
-	t_vec	start;
-	t_vec	direction;
-}	t_ray;
 
 typedef struct s_basis //座標系の回転や変換に関する情報
 {

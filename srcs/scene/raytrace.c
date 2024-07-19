@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_shape.c                                       :+:      :+:    :+:   */
+/*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 16:27:45 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/19 17:49:59 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/17 15:11:33 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/19 17:02:27 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	init_plane(t_scene *scene)
+int	raytracing(t_scene *scene, t_ray *camera_pos, t_rgb *rgb)
 {
-	
+
+	return (1);
 }
