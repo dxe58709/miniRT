@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 17:51:32 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/17 18:53:22 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:15:11 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ bool	intersection_plane(const t_scene *scene, const t_ray *ray,
 	}
 	return (false);
 }
-

@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/19 17:24:40 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:56:05 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef enum e_shape_type {
 typedef struct s_scene {
 	t_shape_type	type;
 	t_light			*light;
-	t_object		*object;
+	t_ref			*object;
 	t_rgb			*ambients;
 	t_basis			basis;
 	t_vec			camera_pos;
@@ -79,6 +79,7 @@ typedef struct s_discrim {
 	double	b;
 	double	c;
 	double	discrim;
+	double	m;
 	double	t;
 	double	t1;
 	double	t2;

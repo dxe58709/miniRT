@@ -6,13 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:30:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/17 19:40:15 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:57:39 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_discrim	discriminant(const t_ray *ray, const t_sphere *sphere)
+static t_discrim	sp_discriminant(const t_ray *ray, const t_sphere *sphere)
 {
 	t_vec		s_c;
 	t_discrim	d;
@@ -25,18 +25,17 @@ static t_discrim	discriminant(const t_ray *ray, const t_sphere *sphere)
 	return (d);
 }
 
-static t_discrim	squrt_discriminant(const t_ray *ray, const t_sphere *sphere)
+void	squrt_discriminant(t_discrim *d)
 {
 	double		squrt_discrim;
-	t_discrim	d;
 
-	squrt_discrim = sqrt(d.discrim);
-	d.t1 = (-d.b - squrt_discrim) / (2 * d.a);
-	d.t2 = (-d.b + squrt_discrim) / (2 * d.a);
-	if (d.t1 < 0)
-		d.t = -d.t1;
-	else
-		d.t = d.t1;
+	squrt_discrim = sqrt(d->discrim);
+	d->t1 = (-d->b - squrt_discrim) / (2 * d->a);
+	d->t2 = (-d->b + squrt_discrim) / (2 * d->a);
+	if (d->t1 > 0)
+		d->t = d->t1;
+	if (d->t2 > 0 && d->t2 < d->t)
+		d->t = d->t2;
 	return (d);
 }
 
@@ -47,11 +46,10 @@ bool	intersection_sphre(const t_scene *scene, const t_ray *ray,
 	t_discrim		d;
 
 	sphere = scene->type;
-	d = discriminant(ray, sphere);
+	d = sp_discriminant(ray, sphere);
 	if (d.discrim < 0)
 		return (false);
-	d = squrt_discriminant(ray, sphere);
-	if (d.t1 > 0 || d.t2 > 0)
+	if (d.t > 0)
 	{
 		if (info)
 		{
