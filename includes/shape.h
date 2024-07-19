@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/17 19:38:31 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:11:01 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ typedef struct s_plane
 	t_basis	basis;//平面の基底
 }	t_plane;
 
-typedef struct s_cone
-{
-	t_vec	position;
-	t_vec	vertical;
-	double	radius;//円錐の半径
-	double	height;
-}	t_cone;
+// typedef struct s_cone
+// {
+// 	t_vec	position;
+// 	t_vec	vertical;
+// 	double	radius;//円錐の半径
+// 	double	height;
+// }	t_cone;
 
 typedef struct s_intersect {
 	double	distance;
@@ -83,8 +83,5 @@ typedef struct s_discrim {
 	double	t1;
 	double	t2;
 }	t_discrim;
-
-//intersection
-bool	intersection_plane(t_scene *scene, t_ray *ray, t_intersect *info);
 
 #endif

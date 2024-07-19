@@ -6,14 +6,14 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/07/15 11:29:54 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/07/19 16:16:00 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
-MLXDIR = ./minilibx_mms_20200219
-MLX = $(MLXDIR)/libmlx.a
+MLXDIR = minilibx_mms_20200219
+MLX = $(MLXDIR)/libmlx.dylib
 
 LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a

@@ -6,11 +6,11 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 21:00:30 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/02 15:56:32 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:33:14 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minirt.h"
+#include "../includes/minirt.h"
 
 static void	ft_error(void)
 {

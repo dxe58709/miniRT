@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/17 17:23:20 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:27:03 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define WINDOW_HEIGHT 400
 
 # define ERR_ARGC	"wrong argc."
+# define ERR_INIT_MLX	"mlx initialization failed."
 
 typedef struct s_vars
 {
