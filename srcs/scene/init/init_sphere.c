@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   init_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 13:49:25 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/23 21:39:20 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/23 22:48:45 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/23 22:50:46 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	free_scene(t_scene *scene)
+bool	init_sphere(t_scene *scene)
 {
-	t_light	*tmp_light;
-
-	if (scene == NULL)
-		return ;
-	while (scene->light != NULL)
-	{
-		tmp_light = scene->light->next;
-		free(scene->light);
-		scene->light = tmp_light;
-	}
+	scene->type == ST_SPHERE;
+	scene->sphere = malloc(sizeof(t_sphere));
+	if (!scene->sphere)
+		return (false);
+	return (true);
 }
-

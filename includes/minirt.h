@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/19 15:27:03 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 00:31:02 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ typedef struct s_rt_info {
 
 # define BUFFER_SIZE 100
 
+# define ERR_RTFILE_FMT "Unexpected comma at the end of the string"
+# define ERR_FNAME		"Unexpocted FileName"
+# define ERR_FD 		"File does not exit"
+# define ERR_INVALID_PARAMS "Not invalid params"
+
 //close
 int		close_window_esc(int keycode, t_vars *vars);
 int		close_window_x(t_vars *vars);
@@ -93,11 +98,10 @@ t_ray	get_camera_ray(const t_scene *scene, double u,
 
 //utils
 void	print_error(char *msg, bool is_true);
-bool	get_next_line(int fd, char **line);
 void	free_scene(t_scene *scene);
+size_t	count_argc(char **split);
 
 //scene
 char	*file_name(char *rt);
-
 
 #endif

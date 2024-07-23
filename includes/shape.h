@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/19 23:56:05 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 00:09:24 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_cylinder
 
 typedef struct s_plane
 {
-	t_vec	point;//平面上のある点の位置ベクトル
-	t_vec	vertical;//垂直ベクトル
+	t_vec	positioin;//平面上のある点の位置ベクトル
+	t_vec	normal;//垂直ベクトル
 	t_basis	basis;//平面の基底
 	t_rgb	rgb;
 }	t_plane;
@@ -72,6 +72,9 @@ typedef struct s_scene {
 	t_vec			camera_pos;
 	t_vec			camera_dir;
 	double			fov;//視野角（Field of View）
+	t_sphere		*sphere;
+	t_plane			*plane;
+	t_cylinder		*cylinder;
 }	t_scene;
 
 typedef struct s_discrim {

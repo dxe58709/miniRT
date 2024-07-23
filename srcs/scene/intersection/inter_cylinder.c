@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 23:14:41 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/20 00:15:46 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/23 20:54:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ bool	intersection_cylinder(const t_scene *scene, const t_ray *ray,
 	const t_cylinder	*cylinder;
 	t_discrim			d;
 
-	cylinder = scene->type;
+	if (scene->type != ST_CYLINDER)
+		return (false);
+	cylinder = scene->cylinder;
 	d = cy_discriminant(ray, cylinder);
 	if (d.t > 0)
 	{

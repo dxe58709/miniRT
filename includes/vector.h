@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:43:36 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/19 16:51:38 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/23 23:32:51 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,6 @@ t_vec	mult_vec(t_vec a, double b);
 //set_vec
 int		set_vec(t_vec *vec, char *str);
 
+//basis
+void	set_basis(t_basis *basis);
 #endif
