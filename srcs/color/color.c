@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:03:05 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:02:55 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:43:47 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	check_rgb_range(char *rgb)
 		print_err_exit("Error : rgb is out of range");
 }
 
-int	check_atof_rgb(char *str)
+int	process_rgb_str(char *str)
 {
 	int		rgb;
 	char	**split;

@@ -6,13 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:35:57 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:38:21 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:47:40 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec	atof_vector_position(char *str)
+t_vec	generate_xyz_vec(char *str)
 {
 	t_vec	vector;
 	char	**split;
@@ -32,7 +32,7 @@ t_vec	check_vector_range(char *str, double min, double max)
 {
 	t_vec	vector;
 
-	vector = atof_vector_position(str);
+	vector = generate_xyz_vec(str);
 	if (!is_in_range_double(vector.x, min, max)
 		|| !is_in_range_double(vector.y, min, max)
 		|| !is_in_range_double(vector.z, min, max))

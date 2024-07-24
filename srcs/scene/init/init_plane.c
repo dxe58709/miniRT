@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
+/*   init_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 16:04:51 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:08:59 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/24 11:41:59 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/24 20:12:15 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_sphere	*sphere(char *line)
+t_plane	*init_plane(char *line)
 {
-	t_sphere	*sphere;
+	t_plane		*plane;
 	char		**split;
 
-	sphere = (t_sphere *)malloc(sizeof(t_sphere));
-	if (!sphere)
+	plane = (t_plane *)malloc(sizeof(t_plane));
+	if (!plane)
 		print_err_exit(ERR_MALLOC);
 	split = split_space(line);
-	split_count(split, 4, ERR_SPHERE_ARGC);
-	if (ft_memcmp(split[0], "sp", 3))
+	split_count(split, 4, ERR_PLANE_ARGC);
+	if (ft_strcmp(split[0], "pl"))
 		print_err_exit(ERR_OBJ_TYPE);
-	sphere->center = atof_vector_position(split[1]);
-	sphere->radius = ft_atof(split[2]);
-	sphere->rgb = check_atof_rgb(split[3]);
+	plane->positioin = generate_xyz_vec(split[1]);
+	plane->normal = check_vector_range(split[2], -1, 1);
+	plane->rgb = process_rgb_str(split[3]);
 	free_split(split);
-	return (sphere);
+	return (plane);
 }

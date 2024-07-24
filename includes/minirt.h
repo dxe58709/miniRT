@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:43:48 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 19:13:24 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,23 @@
 # define ERR_LIGHT_ARGC	"Failed to light Argument"
 # define ERR_RGB_ARGC	"Failed to color Argument"
 # define ERR_OBJ_TYPE	"Invalid object type"
+
+typedef struct s_object
+{
+	t_shape_type	type;
+	void			*object_data;
+	struct s_object	*next;
+}	t_object;
+
+typedef struct s_scene {
+	t_ref			*ref;
+	t_light			light;
+	t_ambient		ambients;
+	t_camera		camera;
+	t_basis			basis;//いらんかも
+	t_object		*object;
+}	t_scene;
+
 typedef struct s_vars
 {
 	void	*mlx;

@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.c                                            :+:      :+:    :+:   */
+/*   init_cylinder.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 11:41:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:04:15 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/24 16:15:06 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/24 20:12:37 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_plane	*plane(char *line)
+t_cylinder	*init_cylinder(char *line)
 {
-	t_plane		*plane;
+	t_cylinder	*cylinder;
 	char		**split;
 
-	plane = (t_plane *)malloc(sizeof(t_plane));
-	if (!plane)
+	cylinder = (t_cylinder *)malloc(sizeof(t_cylinder));
+	if (!cylinder)
 		print_err_exit(ERR_MALLOC);
 	split = split_space(line);
-	split_count(split, 4, ERR_PLANE_ARGC);
-	if (ft_memcmp(split[0], "pl", 3))
+	split_count(split, 6, ERR_CYLINDER_ARGC);
+	if (ft_strcmp(split[0], "cy"))
 		print_err_exit(ERR_OBJ_TYPE);
-	plane->positioin = atof_vector_position(split[1]);
-	plane->normal = check_vector_range(split[2], -1, 1);
-	plane->rgb = check_atof_rgb(split[3]);
+	cylinder->position = generate_xyz_vec(split[1]);
+	cylinder->direction = check_vector_range(split[2], -1, 1);
+	cylinder->radius = ft_atof(split[3]);
+	cylinder->height = ft_atof(split[4]);
+	cylinder->rgb = process_rgb_str(split[3]);
 	free_split(split);
-	return (plane);
+	return (cylinder);
 }

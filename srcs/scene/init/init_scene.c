@@ -6,22 +6,39 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 15:14:30 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 20:54:50 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	get_next_line(int fd, char **line);
-void	free_result(char ***result);
-bool	rt_split(const char *str, char ***result);
-void	free_scene(t_scene *scene);
-bool	correct_identifier(const char **argv, t_scene *scene);
+bool		get_next_line(int fd, char **line);
+int			ft_strcmp(const char *s1, const char *s2);
+t_ambient	init_ambient(char *line);
+t_light		init_light(char *line);
+t_camera	init_camera(char *line);
+void		obj_list_addback(t_object *head, t_object *new_node);
+t_object	*obj_list_new(t_shape_type type, char *line);
+
+static void	check_file_directory(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_DIRECTORY);
+	if (0 <= fd)
+	{
+		close(fd);
+		ft_putstr_fd("Error: is a directory", 2);
+		ft_putchar_fd('\n', 2);
+		exit(1);
+	}
+}
 
 static int	get_fd(char *rt)
 {
 	int		fd;
 
+	check_file_directory(rt);
 	if (!file_name(rt))
 		print_error(ERR_FNAME, false);
 	fd = open(rt, O_RDWR);
@@ -34,37 +51,32 @@ static void	set_scene(t_vars *vars)
 {
 	t_scene	*scene;
 
-	scene = NULL;
 	scene = vars->scene;
 	vars->window_height = WINDOW_HEIGHT;
 	vars->window_width = WINDOW_WIDTH;
-	scene->sphere = NULL;
-	scene->plane = NULL;
-	scene->cylinder = NULL;
 	scene->basis.center = mult_vec(scene->camera.camera_dir,
-			-1 * vars->window_width / (2 * tan(scene->camera.fov / 360 * M_PI)));
+			-1 * vars->window_width
+			/ (2 * tan(scene->camera.fov / 360 * M_PI)));
 }
 
-static bool	scene_setting(t_scene *scene, char *line)
+static void	scene_setting(t_scene *scene, char *line)
 {
-	char	**splite_str;
-	bool	is_correct;
-
-	splite_str = NULL;
-	if (*line)
-	{
-		free(line);
-		return (true);
-	}
-	if (!rt_split(line, &splite_str))
-	{
-		free(line);
-		return (false);
-	}
-	free(line);
-	is_correct = correct_identifier((const char **)splite_str, scene);
-	free_result(&splite_str);
-	return (is_correct);
+	while (ft_isspace(*line))
+		line++;
+	if (ft_strncmp(line, "A", 1) == 0)
+		scene->ambients = init_ambient(line);
+	else if (ft_strncmp(line, "C", 1) == 0)
+		scene->camera = init_camera(line);
+	else if (ft_strncmp(line, "L", 1) == 0)
+		scene->light = init_light(line);
+	else if (ft_strncmp(line, "pl", 2) == 0)
+		obj_list_addback(scene->object, obj_list_new(ST_PLANE, line));
+	else if (ft_strncmp(line, "sp", 2) == 0)
+		obj_list_addback(scene->object, obj_list_new(ST_SPHERE, line));
+	else if (ft_strncmp(line, "cy", 2) == 0)
+		obj_list_addback(scene->object, obj_list_new(ST_CYLINDER, line));
+	else
+		print_err_exit(ERR_OBJ_TYPE);
 }
 
 void	init_scene(t_vars *vars, char *rt)
@@ -78,11 +90,13 @@ void	init_scene(t_vars *vars, char *rt)
 	errno = 0;
 	while (get_next_line(fd, &line))
 	{
-		if (!scene_setting(scene, line))
+		if (ft_strcmp(line, "\n") == 0)
 		{
-			free_scene(scene);
-			exit(EXIT_FAILURE);
+			free(line);
+			continue ;
 		}
+		scene_setting(vars, line);
+		free(line);
 	}
 	close(fd);
 	vars->scene = scene;

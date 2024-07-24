@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 22:43:36 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 15:33:43 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:46:36 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_vec	outer_vec(t_vec a, t_vec b);
 t_vec	mult_vec(t_vec a, double b);
 
 
-t_vec	atof_vector_position(char *str);
+t_vec	generate_xyz_vec(char *str);
 t_vec	check_vector_range(char *str, double min, double max);
 
 //basis

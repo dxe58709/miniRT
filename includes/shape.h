@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:46:37 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:59:58 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,6 @@ typedef struct s_camera {
 	double	fov;//視野角（Field of View）
 }	t_camera;
 
-typedef struct s_scene {
-	t_shape_type	type;
-	t_ref			*object;
-	t_light			light;
-	t_ambient		ambients;
-	t_camera		camera;
-	t_basis			basis;
-	t_sphere		*sphere;
-	t_plane			*plane;
-	t_cylinder		*cylinder;
-}	t_scene;
-
 typedef struct s_discrim {
 	double	a;
 	double	b;
@@ -116,5 +104,5 @@ typedef struct s_discrim {
 void	init_rgb(t_rgb *rgb, double r, double g, double b);
 double	clamp(double value, double min, double max);
 void	set_clamp_color(t_rgb color);
-int		check_atof_rgb(char *str);
+int		process_rgb_str(char *str);
 #endif
