@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 17:51:32 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 00:10:15 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 22:08:22 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ bool	intersection_plane(const t_scene *scene, const t_ray *ray,
 	double			t;
 	t_vec			s_p;
 
-	if (scene->type != ST_PLANE)
+	if (scene->object->type != ST_PLANE)
 		return (false);
-	plane = scene->plane;
+	plane = scene->object->object_data;
 	is_palallel = inner_vec(plane->normal, ray->direction);
 	if (is_palallel == 0)
 		return (false);

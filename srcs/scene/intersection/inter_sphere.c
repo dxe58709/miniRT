@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:30:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/23 21:08:41 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 22:01:20 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ bool	intersection_sphere(const t_scene *scene, const t_ray *ray,
 	const t_sphere	*sphere;
 	t_discrim		d;
 
-	if (scene->type != ST_SPHERE)
+	if (scene->object->type != ST_SPHERE)
 		return (false);
-	sphere = scene->sphere;
+	sphere = scene->object->object_data;
 	d = sp_discriminant(ray, sphere);
 	if (d.discrim < 0)
 		return (false);
