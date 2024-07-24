@@ -6,11 +6,11 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:41:18 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 15:27:46 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 21:30:36 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "minirt.h"
 
 double	clamp(double value, double min, double max)
 {

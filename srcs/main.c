@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:34:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 20:58:09 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 21:37:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	vars->scene->object = init_object();
 	init_scene(vars, argv[1]);
 	init_mlx(vars, argv[1]);
-	img_put(vars);
+	draw(vars);
 	set_hook(vars);
 	close_window(vars);
 	return (0);

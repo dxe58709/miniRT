@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:39:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/19 15:27:24 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 21:53:54 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ static void	destroy_mlx(t_vars *vars, char *msg)
 
 void	init_mlx(t_vars *vars, char *style)
 {
-	vars->mlx = mlx_init();
-	if (vars->mlx == NULL)
+	vars->mlx = malloc(sizeof(t_vars));
+	if (!vars->mlx)
 		destroy_mlx(vars, ERR_INIT_MLX);
 	vars->win = mlx_new_window(vars->mlx, vars->window_width, \
 									vars->window_height, style);
-	if (vars->win == NULL)
+	if (!vars->win)
 		destroy_mlx(vars, ERR_INIT_MLX);
 	vars->img = mlx_new_image(vars->mlx, vars->window_width, \
 									vars->window_height);
-	if (vars->img == NULL)
+	if (!vars->img)
 		destroy_mlx(vars, ERR_INIT_MLX);
 	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_par_pixel, \
 										&vars->bytes_par_line, &vars->endian);

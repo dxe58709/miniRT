@@ -6,29 +6,25 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:41:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/19 15:29:17 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 21:47:34 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	close_window(t_vars *vars)
+int	close_window(t_vars *vars)
 {
-	mlx_destroy_image(vars->mlx, vars->img);
 	mlx_destroy_window(vars->mlx, vars->win);
-	vars->win = NULL;
-	free_scene(vars->scene);
+	exit(0);
+	return (0);
 }
 
 int	close_window_esc(int keycode, t_vars *vars)
 {
 	if (keycode == 53)
+	{
 		close_window(vars);
-	return (0);
-}
-
-int	close_window_x(t_vars *vars)
-{
-	close_window(vars);
+		exit(0);
+	}
 	return (0);
 }

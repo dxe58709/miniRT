@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:00:11 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:51:47 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 21:45:04 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	close_window(t_vars *vars);
 void	init_mlx(t_vars *vars, char *style);
 void	pixel_put(t_vars *vars, int x, int y, int color);
 void	set_hook(t_vars *vars);
-void	img_put(t_vars *vars);
+void	draw(t_vars *vars);
 
 //utils
 void	print_error(char *msg, bool is_true);
 void	print_err_exit(char *str);
-void	free_scene(t_scene *scene);
+
 //split
 void	split_count(char **split, size_t expected, char *err_msg);
 size_t	count_split(char **split);
