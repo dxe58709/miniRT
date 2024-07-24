@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ambient.c                                          :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/19 17:54:58 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:46:46 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/24 11:41:59 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/24 16:04:15 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_ambient	ambient(char *line)
+t_plane	*plane(char *line)
 {
-	t_ambient	ambient;
+	t_plane		*plane;
 	char		**split;
 
+	plane = (t_plane *)malloc(sizeof(t_plane));
+	if (!plane)
+		print_err_exit(ERR_MALLOC);
 	split = split_space(line);
-	split_count(split, 3, ERR_AMBIENT_ARGC);
-	if (ft_memcmp(split[0], "A", 2))
+	split_count(split, 4, ERR_PLANE_ARGC);
+	if (ft_memcmp(split[0], "pl", 3))
 		print_err_exit(ERR_OBJ_TYPE);
-	ambient.ratio = check_atof_range(split[1], 0, 1);
-	ambient.rgb = check_atof_rgb(split[2]);
+	plane->positioin = atof_vector_position(split[1]);
+	plane->normal = check_vector_range(split[2], -1, 1);
+	plane->rgb = check_atof_rgb(split[3]);
 	free_split(split);
-	return (ambient);
+	return (plane);
 }

@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 00:09:24 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:46:37 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,44 @@
 
 #include "minirt.h"
 
+typedef struct s_rgb
+{
+	int	red;
+	int	green;
+	int	blue;
+}	t_rgb;
+
+typedef struct s_light
+{
+	t_vec	position;
+	double	ratio;
+	int		rgb;
+}	t_light;
+
+typedef struct s_ambient
+{
+	double	ratio;
+	int		rgb;
+}	t_ambient;
+
 typedef struct s_ray
 {
 	t_vec	start;
 	t_vec	direction;
 }	t_ray;
 
+typedef struct s_plane
+{
+	t_vec	positioin;//平面上のある点の位置ベクトル
+	t_vec	normal;//垂直ベクトル
+	int		rgb;
+}	t_plane;
+
 typedef struct s_sphere
 {
 	t_vec	center;//球の中心
 	double	radius;//半径
+	int		rgb;
 }	t_sphere;
 
 typedef struct s_cylinder
@@ -33,16 +61,8 @@ typedef struct s_cylinder
 	t_vec	direction;
 	double	radius;//円柱の半径
 	double	height;
-	t_rgb	rgb;
+	int		rgb;
 }	t_cylinder;
-
-typedef struct s_plane
-{
-	t_vec	positioin;//平面上のある点の位置ベクトル
-	t_vec	normal;//垂直ベクトル
-	t_basis	basis;//平面の基底
-	t_rgb	rgb;
-}	t_plane;
 
 typedef struct s_intersect {
 	double	distance;
@@ -63,15 +83,19 @@ typedef enum e_shape_type {
 	ST_CYLINDER,
 }	t_shape_type;
 
+typedef struct s_camera {
+	t_vec	camera_pos;
+	t_vec	camera_dir;
+	double	fov;//視野角（Field of View）
+}	t_camera;
+
 typedef struct s_scene {
 	t_shape_type	type;
-	t_light			*light;
 	t_ref			*object;
-	t_rgb			*ambients;
+	t_light			light;
+	t_ambient		ambients;
+	t_camera		camera;
 	t_basis			basis;
-	t_vec			camera_pos;
-	t_vec			camera_dir;
-	double			fov;//視野角（Field of View）
 	t_sphere		*sphere;
 	t_plane			*plane;
 	t_cylinder		*cylinder;
@@ -88,4 +112,9 @@ typedef struct s_discrim {
 	double	t2;
 }	t_discrim;
 
+//color
+void	init_rgb(t_rgb *rgb, double r, double g, double b);
+double	clamp(double value, double min, double max);
+void	set_clamp_color(t_rgb color);
+int		check_atof_rgb(char *str);
 #endif

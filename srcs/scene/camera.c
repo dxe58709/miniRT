@@ -6,28 +6,24 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:29:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/05 17:00:56 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:42:15 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-//(u, v) pixel座標
-//アスペクト比に応じて幅、高さが計算される
-t_ray	get_camera_ray(const t_scene *scene, double u,
-							double v, double aspect)
+t_camera	camera(char *line)
 {
-	double	viewport_height;
-	double	viewport_width;
-	t_vec	horizon;
-	t_vec	vertical;
-	t_vec	ray_direction;
+	t_camera	camera;
+	char		**split;
 
-	viewport_height = 2.0 * tan(scene->fov / 2.0);
-	viewport_width = aspect * viewport_height;
-	horizon = mult_vec(scene->basis.vertical, viewport_width);
-	vertical = mult_vec(scene->basis.up, viewport_height);
-	ray_direction = normalize_vec(add_vec(add_vec(scene->camera_dir,
-					mult_vec(horizon, u)), mult_vec(vertical, v)));
-	return ((t_ray){scene->camera_pos, ray_direction});
+	split = split_space(line);
+	split_count(split, 4, ERR_CAMERA_ARGC);
+	if (ft_memcmp(split[0], "C", 2))
+		print_err_exit(ERR_OBJ_TYPE);
+	camera.camera_pos = atof_vector_position(split[1]);
+	camera.camera_dir = check_vector_range(split[2], -1, 1);
+	camera.fov = check_atof_range(split[3], 0, 180);
+	free_split(split);
+	return (camera);
 }

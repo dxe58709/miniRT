@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_cylinder.c                                    :+:      :+:    :+:   */
+/*   split_count.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 22:49:47 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/23 22:51:35 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/24 11:47:34 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/24 14:22:52 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	init_cylinder(t_scene *scene)
+size_t	count_split(char **split)
 {
-	scene->type == ST_CYLINDER;
-	scene->cylinder = malloc(sizeof(t_cylinder));
-	if (!scene->cylinder)
-		return (false);
-	return (true);
+	size_t	i;
+
+	i = 0;
+	while (split[i])
+		i++;
+	return (i);
+}
+
+void	split_count(char **split, size_t expected, char *err_msg)
+{
+	size_t	count;
+
+	count = count_split(split);
+	if (count != expected)
+		print_err_exit(err_msg);
 }

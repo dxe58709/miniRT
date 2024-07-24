@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   rt_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 17:42:25 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/19 15:32:45 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/24 16:32:50 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/24 16:39:42 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "minirt.h"
 
-typedef struct s_rgb
+bool	is_in_range_double(double value, double min, double max)
 {
-	double	red;
-	double	green;
-	double	blue;
-}	t_rgb;
+	return (min <= value && value <= max);
+}
 
-void	init_rgb(t_rgb *rgb, double r, double g, double b);
-int		encode_color(t_rgb color);
-void	set_clamp_color(t_rgb color);
-void	color_add(t_rgb a, t_rgb b);
-void	color_mult(t_rgb a, t_rgb b);
-void	color_mult_scalar(t_rgb a, double b);
+double	check_atof_range(char *str, double min, double max)
+{
+	double	value;
 
-#endif
+	value = ft_atof(str);
+	if (!is_in_range_double(value, min, max))
+		print_err_exit("Invalid out of range");
+	return (value);
+}

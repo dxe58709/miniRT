@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 00:32:16 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:14:30 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void	set_scene(t_vars *vars)
 	scene->sphere = NULL;
 	scene->plane = NULL;
 	scene->cylinder = NULL;
-	scene->basis.center = mult_vec(scene->camera_dir,
-			-1 * vars->window_width / (2 * tan(scene->fov / 360 * M_PI)));
+	scene->basis.center = mult_vec(scene->camera.camera_dir,
+			-1 * vars->window_width / (2 * tan(scene->camera.fov / 360 * M_PI)));
 }
 
 static bool	scene_setting(t_scene *scene, char *line)

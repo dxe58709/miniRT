@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ambient.c                                          :+:      :+:    :+:   */
+/*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/19 17:54:58 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 16:46:46 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/07/24 16:04:51 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/07/24 16:08:59 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_ambient	ambient(char *line)
+t_sphere	*sphere(char *line)
 {
-	t_ambient	ambient;
+	t_sphere	*sphere;
 	char		**split;
 
+	sphere = (t_sphere *)malloc(sizeof(t_sphere));
+	if (!sphere)
+		print_err_exit(ERR_MALLOC);
 	split = split_space(line);
-	split_count(split, 3, ERR_AMBIENT_ARGC);
-	if (ft_memcmp(split[0], "A", 2))
+	split_count(split, 4, ERR_SPHERE_ARGC);
+	if (ft_memcmp(split[0], "sp", 3))
 		print_err_exit(ERR_OBJ_TYPE);
-	ambient.ratio = check_atof_range(split[1], 0, 1);
-	ambient.rgb = check_atof_rgb(split[2]);
+	sphere->center = atof_vector_position(split[1]);
+	sphere->radius = ft_atof(split[2]);
+	sphere->rgb = check_atof_rgb(split[3]);
 	free_split(split);
-	return (ambient);
+	return (sphere);
 }
