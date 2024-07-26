@@ -6,11 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:03:05 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 18:43:47 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/26 17:17:08 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	free_split(char **split);
 
 void	init_rgb(t_rgb *rgb, double r, double g, double b)
 {
@@ -19,7 +21,12 @@ void	init_rgb(t_rgb *rgb, double r, double g, double b)
 	rgb->blue = b;
 }
 
-static int	encode_rgb_values(char **split)
+int	encode_rgb(t_rgb rgb)
+{
+	return ((int)rgb.red << 16 | (int)rgb.green << 8 | (int)rgb.blue);
+}
+
+int	encode_rgb_values(char **split)
 {
 	char	*red;
 	char	*green;
@@ -45,7 +52,7 @@ int	process_rgb_str(char *str)
 
 	split = ft_split(str, ',');
 	if (split == NULL)
-		print_error_and_exit(ERR_MALLOC);
+		print_err_exit(ERR_MALLOC);
 	i = 0;
 	while (split[i++])
 		check_rgb_range(split[i]);

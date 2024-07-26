@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 20:54:50 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/26 16:41:12 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	init_scene(t_vars *vars, char *rt)
 			free(line);
 			continue ;
 		}
-		scene_setting(vars, line);
+		scene_setting(scene, line);
 		free(line);
 	}
 	close(fd);

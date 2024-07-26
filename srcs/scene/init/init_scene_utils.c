@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 20:30:19 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/26 16:41:43 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static bool	correct_fname(const char *str, const char *suffix)
 
 	str_len = ft_strlen(str);
 	suffix_len = ft_strlen(suffix);
-
 	if (suffix_len > str_len)
 		return (false);
 	if (ft_strcmp(str + str_len - suffix_len, suffix) == 0)

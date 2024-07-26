@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:39:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 21:53:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/26 17:17:59 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	destroy_mlx(t_vars *vars, char *msg)
 		mlx_destroy_window(vars->mlx, vars->win);
 	if (vars->img)
 		mlx_destroy_image(vars->mlx, vars->img);
-	free_scene(vars->scene);
+	// free_scene(vars->scene);
 	print_error(msg, true);
 }
 

@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/07/23 23:27:40 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/07/26 16:48:50 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,34 +25,37 @@ RM = rm -f
 
 SRCS =	srcs/color/set_color.c \
 		srcs/color/color.c \
-		srcs/utils/get_next_line.c \
-		srcs/utils/rt_sprit.c \
-		srcs/utils/error.c \
-		srcs/utils/free.c \
 		srcs/main.c \
-		srcs/scene/init/init_scene.c \
-		srcs/scene/init/init_scene_utils.c \
-		srcs/scene/init/init_plane.c \
-		srcs/scene/init/init_sphere.c \
-		srcs/scene/init/init_cylinder.c \
-		srcs/scene/ref.c \
-		srcs/scene/intersection/inter_plane.c \
-		srcs/scene/intersection/intersect.c \
-		srcs/scene/intersection/inter_cylinder.c \
-		srcs/scene/intersection/inter_sphere.c \
-		srcs/scene/light.c \
+		srcs/mlx/close_window.c \
+		srcs/mlx/draw.c \
+		srcs/mlx/init_mlx.c \
+		srcs/mlx/pixel_put.c \
+		srcs/mlx/set_hook.c \
 		srcs/scene/ambient.c \
 		srcs/scene/camera.c \
+		srcs/scene/init/init_cylinder.c \
+		srcs/scene/init/init_plane.c \
+		srcs/scene/init/init_scene.c \
+		srcs/scene/init/init_scene_utils.c \
+		srcs/scene/init/init_sphere.c \
+		srcs/scene/intersection/inter_cylinder.c \
+		srcs/scene/intersection/inter_plane.c \
+		srcs/scene/intersection/inter_sphere.c \
+		srcs/scene/intersection/intersect.c \
+		srcs/scene/light.c \
+		srcs/scene/object.c \
 		srcs/scene/raytrace.c \
+		srcs/scene/ref.c \
+		srcs/scene/vec.c \
+		srcs/utils/error.c \
+		srcs/utils/free.c \
+		srcs/utils/get_next_line.c \
+		srcs/utils/rt_atof.c \
+		srcs/utils/rt_sprit.c \
+		srcs/utils/split_count.c \
 		srcs/vector/basis.c \
-		srcs/vector/vector.c \
-		srcs/vector/set_vec.c \
 		srcs/vector/vec_arithmetics.c \
-		srcs/mlx/close_window.c \
-		srcs/mlx/pixel_put.c \
-		srcs/mlx/init_mlx.c \
-		srcs/mlx/image_put.c \
-		srcs/mlx/set_hook.c \
+		srcs/vector/vector.c \
 
 OBJS = $(SRCS:%.c=%.o)
 

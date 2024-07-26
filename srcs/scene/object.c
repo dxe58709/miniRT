@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:14:42 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 20:36:27 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/26 17:19:19 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_object	*init_object(void)
 		print_err_exit(ERR_MALLOC);
 	new_object->next = NULL;
 	new_object->object_data = NULL;
-	new_object->type = NULL;
+	// new_object->type = NULL;
 	return (new_object);
 }
 

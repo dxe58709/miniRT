@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 19:13:24 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/07/26 17:21:41 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libft/libft.h"
 # include "../minilibx_mms_20200219/mlx.h"
 # include "vector.h"
-# include "utils.h"
 # include "shape.h"
 # include <stdlib.h>
 # include <fcntl.h>
@@ -84,5 +83,34 @@ typedef struct s_vars
 }	t_vars;
 
 # define BUFFER_SIZE 100
+
+//close
+int		close_window_esc(int keycode, t_vars *vars);
+int		close_window(t_vars *vars);
+
+//mlx
+void	init_mlx(t_vars *vars, char *style);
+void	pixel_put(t_vars *vars, int x, int y, int color);
+void	set_hook(t_vars *vars);
+void	draw(t_vars *vars);
+
+//utils
+void	print_error(char *msg, bool is_true);
+void	print_err_exit(char *str);
+int		ft_strcmp(const char *s1, const char *s2);
+
+//split
+void	split_count(char **split, size_t expected, char *err_msg);
+size_t	count_split(char **split);
+char	**split_space(char *line);
+char	**split_comma(char *line);
+void	free_split(char **split);
+
+//rt_atof
+double	check_atof_range(char *str, double min, double max);
+bool	is_in_range_double(double value, double min, double max);
+
+//init_scene_utils
+char	*file_name(char *rt);
 
 #endif
