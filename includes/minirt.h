@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/26 17:21:41 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:48:05 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINIRT_H
 
 # include "../libft/libft.h"
-# include "../minilibx_mms_20200219/mlx.h"
+# include "../minilibx_opengl_20191021/mlx.h"
 # include "vector.h"
 # include "shape.h"
 # include <stdlib.h>

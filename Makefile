@@ -6,19 +6,19 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/07/26 16:48:50 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/08/02 17:05:52 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
-MLXDIR = minilibx_mms_20200219
-MLX = $(MLXDIR)/libmlx.dylib
-
 LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
-INCLUDES = -I ./includes -I ./srcs -I $(MLXDIR) 
+MLXDIR = ./minilibx_opengl_20191021
+MLX = $(MLXDIR)/libmlx.a
+
+INCLUDES = -I ./includes -I ./srcs -I $(LIBDIR) -I $(MLXDIR)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
@@ -65,23 +65,20 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME) -framework OpenGL -framework AppKit
 
 $(LIBFT):
 	$(MAKE) -C $(LIBDIR)
-
 $(MLX):
 	$(MAKE) -C $(MLXDIR)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(MLX) $(LIBFT)
 	@$(MAKE) -C $(LIBDIR) clean
 	@$(MAKE) -C $(MLXDIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
-	@$(MAKE) -C $(LIBDIR) fclean
-	@$(MAKE) -C $(MLXDIR) fclean
 
 fe: fclean all
 
