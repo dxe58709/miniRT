@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 23:14:41 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/02 17:27:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/03 23:55:40 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool	intersection_cylinder(const t_scene *scene, const t_ray *ray,
 						diff_vec(info->position, cylinder->position),
 						mult_vec(cylinder->direction,
 						inner_vec(diff_vec(info->position,
-						cylinder->position), cylinder->direction))))
+						cylinder->position), cylinder->direction))));
 		}
 		return (true);
 	}
