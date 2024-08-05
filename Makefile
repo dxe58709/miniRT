@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/08/04 00:00:11 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/08/05 20:14:20 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,9 +82,9 @@ fclean: clean
 
 re: fclean all
 
-__debug_configure__:
-	$(eval CC := gcc)
-	$(eval CFLAGS := -g -fsanitize=address -Wall -Wextra -Werror)
+# __debug_configure__:
+# 	$(eval CC := gcc)
+# 	$(eval CFLAGS := -g -fsanitize=address -Wall -Wextra -Werror)
 
 debug: fclean __debug_configure__ all
 

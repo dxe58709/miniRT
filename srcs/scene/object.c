@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:14:42 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/26 17:19:19 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/05 20:31:58 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_object	*init_object(void)
 {
 	t_object	*new_object;
 
-	new_object = (t_object *)malloc(sizeof(t_object));
+	new_object = ft_calloc(1, sizeof(t_object));
 	if (!new_object)
 		print_err_exit(ERR_MALLOC);
 	new_object->next = NULL;

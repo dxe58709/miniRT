@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/26 16:41:12 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/05 20:41:24 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,6 @@ static int	get_fd(char *rt)
 	if (fd < 0)
 		print_error(ERR_FD, false);
 	return (fd);
-}
-
-static void	set_scene(t_vars *vars)
-{
-	t_scene	*scene;
-
-	scene = vars->scene;
-	vars->window_height = WINDOW_HEIGHT;
-	vars->window_width = WINDOW_WIDTH;
-	scene->basis.center = mult_vec(scene->camera.camera_dir,
-			-1 * vars->window_width
-			/ (2 * tan(scene->camera.fov / 360 * M_PI)));
 }
 
 static void	scene_setting(t_scene *scene, char *line)
@@ -100,6 +88,8 @@ void	init_scene(t_vars *vars, char *rt)
 	}
 	close(fd);
 	vars->scene = scene;
-	set_scene(vars);
+	scene->basis.center = mult_vec(scene->camera.camera_dir,
+			1 * vars->window_width
+			/ (2 * tan(scene->camera.fov / 360 * M_PI)));
 	set_basis(&scene->basis);
 }

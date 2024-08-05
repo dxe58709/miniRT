@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:39:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/26 17:17:59 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/05 20:38:57 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ static void	destroy_mlx(t_vars *vars, char *msg)
 
 void	init_mlx(t_vars *vars, char *style)
 {
-	vars->mlx = malloc(sizeof(t_vars));
+	vars->mlx = mlx_init();
 	if (!vars->mlx)
 		destroy_mlx(vars, ERR_INIT_MLX);
+	vars->window_height = WINDOW_HEIGHT;
+	vars->window_width = WINDOW_WIDTH;
 	vars->win = mlx_new_window(vars->mlx, vars->window_width, \
 									vars->window_height, style);
 	if (!vars->win)

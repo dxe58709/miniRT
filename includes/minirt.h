@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/02 16:48:05 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/05 20:42:23 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # include <math.h>
 # include <errno.h>
 
-# define WINDOW_WIDTH 400
-# define WINDOW_HEIGHT 400
+# define WINDOW_WIDTH 600
+# define WINDOW_HEIGHT 600
 
 # define ERR_ARGC		"wrong argc."
 # define ERR_INIT_MLX	"mlx initialization failed."
