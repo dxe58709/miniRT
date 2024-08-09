@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 16:27:35 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:46:36 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_camera	init_camera(char *line);
 void		obj_list_addback(t_object *head, t_object *new_node);
 t_object	*obj_list_new(t_shape_type type, char *line);
 char		*file_name(char *rt);
+void		init_vars(t_vars *vars);
 
 static void	check_file_directory(char *file)
 {
@@ -41,10 +42,10 @@ static int	get_fd(char *rt)
 
 	check_file_directory(rt);
 	if (!file_name(rt))
-		print_error(ERR_FNAME, false);
+		print_err_exit(ERR_FNAME);
 	fd = open(rt, O_RDWR);
 	if (fd < 0)
-		print_error(ERR_FD, false);
+		print_err_exit(ERR_FD);
 	return (fd);
 }
 
@@ -75,8 +76,8 @@ void	init_scene(t_vars *vars, char *rt)
 	t_scene	*scene;
 
 	fd = get_fd(rt);
+	init_vars(vars);
 	scene = ft_calloc(1, sizeof(t_scene));
-	errno = 0;
 	while (get_next_line(fd, &line))
 	{
 		if (ft_strcmp(line, "\n") == 0)

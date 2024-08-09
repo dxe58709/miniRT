@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/26 16:41:43 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:35:47 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*file_name(char *rt)
 
 	if (!(correct_fname(rt, ".rt")))
 	{
-		print_error(ERR_FNAME, true);
+		print_err_exit(ERR_FNAME);
 		return (0);
 	}
 	filename = ft_strrchr(rt, '/');

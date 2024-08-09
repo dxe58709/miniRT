@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 16:27:42 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:51:42 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # include <math.h>
 # include <errno.h>
 
-# define WINDOW_WIDTH 600
+# define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
 
 # define ERR_ARGC		"wrong argc."
@@ -85,7 +85,6 @@ typedef struct s_vars
 # define BUFFER_SIZE 100
 
 //utils
-void	print_error(char *msg, bool is_true);
 void	print_err_exit(char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 
