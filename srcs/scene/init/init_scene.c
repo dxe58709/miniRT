@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/05 20:41:24 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:27:35 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_light		init_light(char *line);
 t_camera	init_camera(char *line);
 void		obj_list_addback(t_object *head, t_object *new_node);
 t_object	*obj_list_new(t_shape_type type, char *line);
+char		*file_name(char *rt);
 
 static void	check_file_directory(char *file)
 {

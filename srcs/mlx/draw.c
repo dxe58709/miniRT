@@ -6,15 +6,15 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:06:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 15:17:44 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:26:17 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	encode_rgb(t_rgb rgb);
+int		encode_rgb(t_rgb rgb);
 
-static t_vec	camera_direction(t_vars *vars, int x, int y)
+static t_vec	get_camera_direction(t_vars *vars, int x, int y)
 {
 	t_vec	center;
 	t_vec	u;
@@ -34,10 +34,20 @@ static t_vec	camera_direction(t_vars *vars, int x, int y)
 			));
 }
 
+void	pixel_put(t_vars *vars, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = vars->addr + (y * vars->bytes_par_line
+			+ x * (vars->bytes_par_pixel) / 8);
+	*(unsigned int *)dst = color;
+}
+
 void	draw(t_vars *vars)
 {
 	int		x;
 	int		y;
+	t_ray	camera;
 	t_rgb	color;
 
 	y = 0;
@@ -46,10 +56,10 @@ void	draw(t_vars *vars)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			//視点位置から点(x,y)に向かう半直線と物体との交差判定を行う
-			vars->scene->camera.camera_dir = camera_direction(vars, x, y);
+			camera.start = vars->scene->camera.camera_pos;
+			vars->scene->camera.camera_dir = get_camera_direction(vars, x, y);
 			init_rgb(&color, 0, 0, 0);
-			// raytrace(vars->scene, &camera, &color);
+			//raytrace
 			pixel_put(vars, x, y, encode_rgb(color));
 			x++;
 		}

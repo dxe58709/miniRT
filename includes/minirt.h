@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/05 20:42:23 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:27:42 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,6 @@ typedef struct s_vars
 
 # define BUFFER_SIZE 100
 
-//close
-int		close_window_esc(int keycode, t_vars *vars);
-int		close_window(t_vars *vars);
-
-//mlx
-void	init_mlx(t_vars *vars, char *style);
-void	pixel_put(t_vars *vars, int x, int y, int color);
-void	set_hook(t_vars *vars);
-void	draw(t_vars *vars);
-
 //utils
 void	print_error(char *msg, bool is_true);
 void	print_err_exit(char *str);
@@ -109,8 +99,5 @@ void	free_split(char **split);
 //rt_atof
 double	check_atof_range(char *str, double min, double max);
 bool	is_in_range_double(double value, double min, double max);
-
-//init_scene_utils
-char	*file_name(char *rt);
 
 #endif
