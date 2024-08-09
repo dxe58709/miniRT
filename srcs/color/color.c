@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:03:05 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/26 17:17:08 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/09 00:52:42 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	encode_rgb_values(char **split)
 static void	check_rgb_range(char *rgb)
 {
 	if (ft_atoi(rgb) < 0 || 255 < ft_atoi(rgb))
-		print_err_exit("Error : rgb is out of range");
+		print_err_exit("Error : rgb is out of range\n");
 }
 
 int	process_rgb_str(char *str)

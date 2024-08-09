@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/08/05 20:14:20 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/08/09 15:54:21 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,16 +28,12 @@ SRCS =	srcs/color/set_color.c \
 		srcs/main.c \
 		srcs/mlx/close_window.c \
 		srcs/mlx/draw.c \
-		srcs/mlx/init_mlx.c \
-		srcs/mlx/pixel_put.c \
-		srcs/mlx/set_hook.c \
+		srcs/mlx/mlx.c \
 		srcs/scene/ambient.c \
 		srcs/scene/camera.c \
-		srcs/scene/init/init_cylinder.c \
-		srcs/scene/init/init_plane.c \
 		srcs/scene/init/init_scene.c \
 		srcs/scene/init/init_scene_utils.c \
-		srcs/scene/init/init_sphere.c \
+		srcs/scene/init/init_shape.c \
 		srcs/scene/intersection/inter_cylinder.c \
 		srcs/scene/intersection/inter_plane.c \
 		srcs/scene/intersection/inter_sphere.c \
