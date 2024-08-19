@@ -6,101 +6,81 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:06 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/15 10:26:56 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:32:56 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "libft.h"
 #include <stdio.h>
 
-char	*ft_free(char *str)
+static void	split_next_line(char **save_p, char **buff_p, char **line_p)
 {
-	free(str);
-	return (NULL);
-}
+	char	*save_plus_buff;
+	char	*new_line_pos;
 
-char	*join_line(int fd, char *line)
-{
-	char	*buf;
-	int		readbyte;
-	char	*tmpline;
-
-	buf = malloc((BUFFER_SIZE + 1) * (sizeof(char)));
-	if (!buf && line)
-		return (ft_free(line));
-	readbyte = 1;
-	while (readbyte > 0)
+	save_plus_buff = ft_strjoin(*save_p, *buff_p);
+	new_line_pos = ft_strchr(save_plus_buff, '\n');
+	if (!new_line_pos)
 	{
-		readbyte = read(fd, buf, BUFFER_SIZE);
-		if (readbyte == -1)
-			ft_free(buf);
-		buf[readbyte] = '\0';
-		tmpline = line;
-		line = ft_strjoin(line, buf);
-		free (tmpline);
-		if (!line)
-			return (ft_free(buf));
-		if (ft_strchr(line, '\n'))
-			break ;
+		free(*save_p);
+		*save_p = save_plus_buff;
+		return ;
 	}
-	free (buf);
-	return (line);
+	free(*save_p);
+	*save_p = ft_strdup(new_line_pos + 1);
+	*(new_line_pos) = '\0';
+	*line_p = ft_strdup(save_plus_buff);
+	free(save_plus_buff);
 }
 
-char	*get_line(char *memo)
+static bool	handle_eof_or_error(char **save_p, char **buff_p, \
+								char **line_p, ssize_t code)
 {
-	size_t	i;
-	char	*line;
-
-	i = 0;
-	if (!memo[i])
-		return (NULL);
-	while (memo[i] && memo[i] != '\n')
-		i++;
-	line = (char *)malloc((i + 2) * (sizeof(char)));
-	if (!line)
-		return (NULL);
-	ft_strlcpy(line, memo, (i + 2));
-	return (line);
-}
-
-char	*save_tmp(char *memo)
-{
-	char	*tmp;
-	size_t	i;
-	size_t	len;
-
-	i = 0;
-	len = ft_strlen(memo);
-	while (memo[i] && memo[i] != '\n')
-		i++;
-	if (!memo[i])
+	free(*buff_p);
+	if (code == 0)
 	{
-		free(memo);
-		return (NULL);
+		if (!*save_p || !**save_p)
+		{
+			free(*save_p);
+			return (false);
+		}
+		else
+		{
+			*line_p = *save_p;
+			*save_p = NULL;
+			return (true);
+		}
 	}
-	tmp = (char *)malloc((len - i) * (sizeof(char)));
-	if (!tmp)
-		return (ft_free(memo));
-	ft_strlcpy(tmp, memo + i + 1, (len - i));
-	free(memo);
-	return (tmp);
+	else
+	{
+		free(*save_p);
+		return (false);
+	}
 }
 
 bool	get_next_line(int fd, char **line)
 {
+	char		*buff;
 	static char	*save;
-	char		*tmp;
+	ssize_t		code;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	*line = NULL;
+	buff = NULL;
+	split_next_line(&save, &buff, line);
+	if (*line)
+		return (true);
+	buff = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buff)
 		return (false);
-	save = join_line(fd, save);
-	if (!save)
-		return (false);
-	*line = get_line(save);
-	tmp = save_tmp(save);
-	if (!*line && tmp)
-		return (false);
-	save = tmp;
+	while (*line == NULL)
+	{
+		code = read(fd, buff, BUFFER_SIZE);
+		if (code == 0 || code == -1)
+			return (handle_eof_or_error(&save, &buff, line, code));
+		buff[code] = '\0';
+		split_next_line(&save, &buff, line);
+	}
+	free(buff);
 	return (true);
 }

@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yushsato <yushsato@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:05:52 by yushsato          #+#    #+#             */
-/*   Updated: 2023/05/21 04:02:57 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/08/09 23:04:03 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {

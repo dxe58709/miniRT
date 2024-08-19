@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 16:46:36 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:38:27 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,17 @@ void	init_scene(t_vars *vars, char *rt)
 	scene = ft_calloc(1, sizeof(t_scene));
 	while (get_next_line(fd, &line))
 	{
+		printf("After calling get_next_line: line = %s\n", line);
 		if (ft_strcmp(line, "\n") == 0)
 		{
 			free(line);
 			continue ;
 		}
 		scene_setting(scene, line);
+		printf("Processed line\n");
 		free(line);
 	}
+	printf("Finished reading file\n");
 	close(fd);
 	vars->scene = scene;
 	scene->basis.center = mult_vec(scene->camera.camera_dir,

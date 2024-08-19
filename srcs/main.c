@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:34:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 16:45:44 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:01:44 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 	vars = ft_calloc(1, sizeof(t_vars));
 	init_scene(vars, argv[1]);
 	vars->scene->object = init_object();
+	printf("Camera Position: (%f, %f, %f)\n", vars->scene->camera.camera_pos.x, vars->scene->camera.camera_pos.y, vars->scene->camera.camera_pos.z);
 	set_hook(vars);
 	close_window(vars);
 	free_object_node(vars->scene->object);
