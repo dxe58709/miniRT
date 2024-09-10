@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:06 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/15 19:32:56 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:23:00 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,102 @@
 #include "libft.h"
 #include <stdio.h>
 
-static void	split_next_line(char **save_p, char **buff_p, char **line_p)
+static char	*gnl_strchr(const char *s, int c)
 {
-	char	*save_plus_buff;
-	char	*new_line_pos;
+	const char	cc = (const char)c;
 
-	save_plus_buff = ft_strjoin(*save_p, *buff_p);
-	new_line_pos = ft_strchr(save_plus_buff, '\n');
-	if (!new_line_pos)
+	if (s == NULL)
+		return (NULL);
+	while (*s != cc)
 	{
-		free(*save_p);
-		*save_p = save_plus_buff;
-		return ;
+		if (*s == '\0')
+			return (NULL);
+		s++;
 	}
-	free(*save_p);
-	*save_p = ft_strdup(new_line_pos + 1);
-	*(new_line_pos) = '\0';
-	*line_p = ft_strdup(save_plus_buff);
-	free(save_plus_buff);
+	return ((char *)s);
 }
 
-static bool	handle_eof_or_error(char **save_p, char **buff_p, \
-								char **line_p, ssize_t code)
+static char	*gnl_strjoin(char *target, char *str)
 {
-	free(*buff_p);
-	if (code == 0)
+	size_t	tlen;
+	size_t	slen;
+	char	*ret;
+
+	tlen = 0;
+	if (target != NULL)
+		tlen = ft_strlen(target);
+	slen = 0;
+	if (str != NULL)
+		slen = ft_strlen(str);
+	ret = NULL;
+	if (tlen + slen != 0)
 	{
-		if (!*save_p || !**save_p)
+		ret = malloc(tlen + slen + 1);
+		if (ret)
 		{
-			free(*save_p);
-			return (false);
-		}
-		else
-		{
-			*line_p = *save_p;
-			*save_p = NULL;
-			return (true);
+			ft_memcpy(ret, target, tlen);
+			ft_memcpy(ret + tlen, str, slen);
+			ret[tlen + slen] = '\0';
 		}
 	}
-	else
-	{
-		free(*save_p);
-		return (false);
-	}
+	if (target)
+		free(target);
+	return (ret);
 }
 
-bool	get_next_line(int fd, char **line)
+static char	*gnl_nread(int fd, char *cache)
 {
-	char		*buff;
-	static char	*save;
-	ssize_t		code;
+	char	*buf;
+	ssize_t	len;
 
-	*line = NULL;
-	buff = NULL;
-	split_next_line(&save, &buff, line);
-	if (*line)
-		return (true);
-	buff = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (!buff)
-		return (false);
-	while (*line == NULL)
+	if (BUFFER_SIZE < 0)
+		return (NULL);
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
+		return (NULL);
+	len = 1;
+	while (gnl_strchr(cache, '\n') == NULL)
 	{
-		code = read(fd, buff, BUFFER_SIZE);
-		if (code == 0 || code == -1)
-			return (handle_eof_or_error(&save, &buff, line, code));
-		buff[code] = '\0';
-		split_next_line(&save, &buff, line);
+		len = read(fd, buf, BUFFER_SIZE);
+		if (len <= 0)
+			break ;
+		buf[len] = '\0';
+		cache = gnl_strjoin(cache, buf);
+		if (cache == NULL)
+			break ;
 	}
-	free(buff);
-	return (true);
+	free(buf);
+	if (len < 0 && cache != NULL)
+		free(cache);
+	if (len < 0)
+		cache = NULL;
+	return (cache);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*cache;
+	char		*ptr;
+	char		*tmp;
+	char		*ret;
+
+	cache = gnl_nread(fd, cache);
+	if (cache == NULL)
+		return (NULL);
+	ptr = gnl_strchr(cache, '\n');
+	if (ptr == NULL)
+	{
+		ptr = cache;
+		cache = NULL;
+		return (ptr);
+	}
+	tmp = gnl_strjoin(NULL, ptr + 1);
+	ret = malloc(ptr - cache + 2);
+	if (ret == NULL)
+		return (NULL);
+	ret[ptr - cache + 1] = '\0';
+	ft_memcpy(ret, cache, ptr - cache + 1);
+	free(cache);
+	cache = tmp;
+	return (ret);
 }

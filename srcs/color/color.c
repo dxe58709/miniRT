@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:03:05 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 00:52:42 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:43:23 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ int	process_rgb_str(char *str)
 	if (split == NULL)
 		print_err_exit(ERR_MALLOC);
 	i = 0;
-	while (split[i++])
+	while (split[i])
+	{
 		check_rgb_range(split[i]);
+		i++;
+	}
 	if (i != 3)
 		print_err_exit(ERR_RGB_ARGC);
 	rgb = encode_rgb_values(split);

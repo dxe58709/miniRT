@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/08/09 15:54:21 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/09/10 18:33:26 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLX = $(MLXDIR)/libmlx.a
 
 INCLUDES = -I ./includes -I ./srcs -I $(LIBDIR) -I $(MLXDIR)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 RM = rm -f
 
 SRCS =	srcs/color/set_color.c \

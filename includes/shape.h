@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/07/24 18:59:58 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/10 19:41:52 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_ray
 
 typedef struct s_plane
 {
-	t_vec	positioin;//平面上のある点の位置ベクトル
+	t_vec	position;//平面上のある点の位置ベクトル
 	t_vec	normal;//垂直ベクトル
 	int		rgb;
 }	t_plane;

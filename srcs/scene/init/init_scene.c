@@ -6,13 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/15 19:38:27 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/10 19:09:53 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool		get_next_line(int fd, char **line);
+char		*get_next_line(int fd);
 int			ft_strcmp(const char *s1, const char *s2);
 t_ambient	init_ambient(char *line);
 t_light		init_light(char *line);
@@ -78,8 +78,11 @@ void	init_scene(t_vars *vars, char *rt)
 	fd = get_fd(rt);
 	init_vars(vars);
 	scene = ft_calloc(1, sizeof(t_scene));
-	while (get_next_line(fd, &line))
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		printf("After calling get_next_line: line = %s\n", line);
 		if (ft_strcmp(line, "\n") == 0)
 		{

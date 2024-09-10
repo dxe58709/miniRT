@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:41:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 15:53:45 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/10 19:05:28 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_plane	*init_plane(char *line)
 	split_count(split, 4, ERR_PLANE_ARGC);
 	if (ft_strcmp(split[0], "pl"))
 		print_err_exit(ERR_OBJ_TYPE);
-	plane->positioin = generate_xyz_vec(split[1]);
+	plane->position = generate_xyz_vec(split[1]);
 	plane->normal = check_vector_range(split[2], -1, 1);
 	plane->rgb = process_rgb_str(split[3]);
 	free_split(split);
