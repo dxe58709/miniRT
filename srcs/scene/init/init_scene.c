@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/12 18:48:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:09:25 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ static void	scene_setting(t_scene *scene, char *line)
 	else if (ft_strncmp(line, "L", 1) == 0)
 		scene->light = init_light(line);
 	else if (ft_strncmp(line, "pl", 2) == 0)
-		obj_list_addback(scene->object, obj_list_new(ST_PLANE, line));
+		obj_list_addback(&scene->object, obj_list_new(ST_PLANE, line));
 	else if (ft_strncmp(line, "sp", 2) == 0)
-		obj_list_addback(scene->object, obj_list_new(ST_SPHERE, line));
+		obj_list_addback(&scene->object, obj_list_new(ST_SPHERE, line));
 	else if (ft_strncmp(line, "cy", 2) == 0)
-		obj_list_addback(scene->object, obj_list_new(ST_CYLINDER, line));
+		obj_list_addback(&scene->object, obj_list_new(ST_CYLINDER, line));
 	else
 		print_err_exit(ERR_OBJ_TYPE);
 }

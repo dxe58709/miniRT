@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:14:42 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/12 17:45:15 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:15:20 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ t_object	*obj_list_new(t_shape_type type, char *line)
 		new->object_data = (void *)init_cylinder(line);
 	else
 		print_err_exit(ERR_OBJ_TYPE);
-	printf("[ .  obj_data ]%p\n", new->object_data);
 	return (new);
 }
 
@@ -76,6 +75,8 @@ void	free_object_node(t_object *head)
 	t_object	*tmp;
 	t_object	*node;
 
+	if (!head)
+		return ;
 	node = head->next;
 	while (node)
 	{

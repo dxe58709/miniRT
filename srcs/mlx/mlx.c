@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:39:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/12 16:49:06 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:21:10 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	init_vars(t_vars *vars)
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
 		destroy_mlx(vars, ERR_INIT_MLX);
-	vars->win = mlx_new_window(vars->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "minirt");
+	vars->win = mlx_new_window(vars->mlx,
+			WINDOW_WIDTH, WINDOW_HEIGHT, "minirt");
 	if (!vars->win)
 		destroy_mlx(vars, ERR_INIT_MLX);
 	vars->img = mlx_new_image(vars->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -39,6 +40,7 @@ void	init_vars(t_vars *vars)
 		destroy_mlx(vars, ERR_INIT_MLX);
 	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_par_pixel, \
 										&vars->bytes_par_line, &vars->endian);
+	vars->bytes_par_pixel = vars->bits_par_pixel / 8;
 	vars->window_width = WINDOW_WIDTH;
 	vars->window_height = WINDOW_HEIGHT;
 }
