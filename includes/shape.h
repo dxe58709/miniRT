@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:01:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/10 19:41:52 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:01:31 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_ref {
 }	t_ref;
 
 typedef enum e_shape_type {
-	ST_SPHERE,
+	ST_SPHERE = 1,
 	ST_PLANE,
 	ST_CYLINDER,
 }	t_shape_type;

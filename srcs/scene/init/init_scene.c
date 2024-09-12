@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/10 19:09:53 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:48:54 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			ft_strcmp(const char *s1, const char *s2);
 t_ambient	init_ambient(char *line);
 t_light		init_light(char *line);
 t_camera	init_camera(char *line);
-void		obj_list_addback(t_object *head, t_object *new_node);
+void		obj_list_addback(t_object **head, t_object *new_node);
 t_object	*obj_list_new(t_shape_type type, char *line);
 char		*file_name(char *rt);
 void		init_vars(t_vars *vars);
@@ -83,17 +83,14 @@ void	init_scene(t_vars *vars, char *rt)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		printf("After calling get_next_line: line = %s\n", line);
 		if (ft_strcmp(line, "\n") == 0)
 		{
 			free(line);
 			continue ;
 		}
 		scene_setting(scene, line);
-		printf("Processed line\n");
 		free(line);
 	}
-	printf("Finished reading file\n");
 	close(fd);
 	vars->scene = scene;
 	scene->basis.center = mult_vec(scene->camera.camera_dir,

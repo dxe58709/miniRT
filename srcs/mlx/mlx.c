@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:39:34 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 16:43:31 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:49:06 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	init_vars(t_vars *vars)
 		destroy_mlx(vars, ERR_INIT_MLX);
 	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_par_pixel, \
 										&vars->bytes_par_line, &vars->endian);
+	vars->window_width = WINDOW_WIDTH;
+	vars->window_height = WINDOW_HEIGHT;
 }
 
 void	set_hook(t_vars *vars)

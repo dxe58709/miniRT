@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:14:42 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/10 20:32:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:45:15 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_object	*obj_list_new(t_shape_type type, char *line)
 		new->object_data = (void *)init_cylinder(line);
 	else
 		print_err_exit(ERR_OBJ_TYPE);
+	printf("[ .  obj_data ]%p\n", new->object_data);
 	return (new);
 }
 
@@ -56,14 +57,17 @@ t_object	*object_last_node(t_object *head)
 	return (node);
 }
 
-void	obj_list_addback(t_object *head, t_object *new_node)
+void	obj_list_addback(t_object **head, t_object *new_node)
 {
 	t_object	*last_node;
 
-	last_node = object_last_node(head);
-	if (!last_node)
-		last_node = ft_calloc(1, sizeof(t_object));
-	last_node->next = new_node;
+	if (*head == NULL)
+		*head = new_node;
+	else
+	{
+		last_node = object_last_node(*head);
+		last_node->next = new_node;
+	}
 	new_node->next = NULL;
 }
 

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by nsakanou          #+#    #+#             */
-/*   Updated: 2024/08/09 16:35:47 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/09/12 18:54:02 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/09/12 18:54:03 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
