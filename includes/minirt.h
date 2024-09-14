@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 21:35:21 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/12 16:47:58 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/09/14 21:43:23 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/09/14 22:23:44 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,16 @@
 # define ERR_RGB_ARGC	"Failed to color Argument"
 # define ERR_OBJ_TYPE	"Invalid object type"
 
-typedef struct s_object
-{
-	t_shape_type	type;
-	void			*object_data;
-	struct s_object	*next;
-}	t_object;
-
 typedef struct s_scene {
 	t_ref			*ref;
 	t_light			light;
 	t_ambient		ambients;
 	t_camera		camera;
-	t_basis			basis;//いらんかも
+	t_basis			basis;
 	t_object		*object;
 }	t_scene;
 
-typedef struct s_vars
-{
+typedef struct s_vars {
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -98,5 +90,10 @@ void	free_split(char **split);
 //rt_atof
 double	check_atof_range(char *str, double min, double max);
 bool	is_in_range_double(double value, double min, double max);
+
+//color
+void	init_rgb(t_rgb *rgb, double r, double g, double b);
+double	clamp(double value, double min, double max);
+t_rgb	process_rgb_str(char *str);
 
 #endif

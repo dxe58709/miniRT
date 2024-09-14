@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:29:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/14 22:31:26 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/14 23:14:08 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,34 @@ t_plane	*set_plane(char *line)
 	plane->rgb = process_rgb_str(split[3]);
 	free_split(split);
 	return (plane);
+}
+
+bool	intersection_plane(const t_object *object, const t_ray *ray,
+	t_intersect *info)
+{
+	const t_plane	*plane;
+	double			is_palallel;
+	double			t;
+	t_vec			s_p;
+
+	if (object->type != ST_PLANE)
+		return (false);
+	plane = object->u_data.plane;
+	is_palallel = inner_vec(plane->normal, ray->direction);
+	if (is_palallel == 0)
+		return (false);
+	s_p = diff_vec(plane->position, ray->position);
+	t = (inner_vec(s_p, plane->normal) / is_palallel);
+	if (t > 0)
+	{
+		if (info)
+		{
+			info->distance = t;
+			info->position = add_vec(ray->position,
+					mult_vec(ray->direction, t));
+			info->normal = plane->normal;
+		}
+		return (true);
+	}
+	return (false);
 }

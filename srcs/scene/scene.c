@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:03:22 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/14 22:06:38 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/15 00:53:12 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	init_scene(t_vars *vars, char *rt)
 	}
 	close(fd);
 	vars->scene = scene;
-	scene->basis.center = mult_vec(scene->camera.camera_dir,
+	scene->basis.center = mult_vec(scene->camera.direction,
 			1 * vars->window_width
 			/ (2 * tan(scene->camera.fov / 360 * M_PI)));
 	set_basis(&scene->basis);

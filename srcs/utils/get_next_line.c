@@ -6,13 +6,12 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:06 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/10 18:23:00 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/14 21:42:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "libft.h"
-#include <stdio.h>
 
 static char	*gnl_strchr(const char *s, int c)
 {

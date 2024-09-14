@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/09/10 18:33:26 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/09/14 23:53:09 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,40 +18,36 @@ LIBFT = $(LIBDIR)/libft.a
 MLXDIR = ./minilibx_opengl_20191021
 MLX = $(MLXDIR)/libmlx.a
 
-INCLUDES = -I ./includes -I ./srcs -I $(LIBDIR) -I $(MLXDIR)
+INCLUDES = -I./includes -I ./srcs -I $(LIBDIR) -I $(MLXDIR)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 RM = rm -f
 
-SRCS =	srcs/color/set_color.c \
-		srcs/color/color.c \
-		srcs/main.c \
-		srcs/mlx/close_window.c \
-		srcs/mlx/draw.c \
-		srcs/mlx/mlx.c \
-		srcs/scene/ambient.c \
-		srcs/scene/camera.c \
-		srcs/scene/init/init_scene.c \
-		srcs/scene/init/init_scene_utils.c \
-		srcs/scene/init/init_shape.c \
-		srcs/scene/intersection/inter_cylinder.c \
-		srcs/scene/intersection/inter_plane.c \
-		srcs/scene/intersection/inter_sphere.c \
-		srcs/scene/intersection/intersect.c \
-		srcs/scene/light.c \
-		srcs/scene/object.c \
-		srcs/scene/raytrace.c \
-		srcs/scene/ref.c \
-		srcs/scene/vec.c \
-		srcs/utils/error.c \
-		srcs/utils/free.c \
-		srcs/utils/get_next_line.c \
-		srcs/utils/rt_atof.c \
-		srcs/utils/rt_sprit.c \
-		srcs/utils/split_count.c \
-		srcs/vector/basis.c \
-		srcs/vector/vec_arithmetics.c \
-		srcs/vector/vector.c \
+SRCS = srcs/color/cal_color.c \
+       srcs/color/color.c \
+       srcs/utils/rt_atof.c \
+       srcs/utils/get_next_line.c \
+       srcs/utils/rt_sprit.c \
+       srcs/utils/error.c \
+       srcs/utils/split_count.c \
+       srcs/utils/scene_utils.c \
+       srcs/main.c \
+       srcs/scene/object.c \
+       srcs/scene/scene.c \
+       srcs/scene/light.c \
+       srcs/scene/vec.c \
+       srcs/scene/ambient.c \
+       srcs/scene/intersection.c \
+       srcs/scene/cylinder.c \
+       srcs/scene/sphere.c \
+       srcs/scene/camera.c \
+       srcs/scene/plane.c \
+       srcs/vector/vector.c \
+       srcs/vector/cal_vec.c \
+       srcs/vector/basis.c \
+       srcs/mlx/close_window.c \
+       srcs/mlx/draw.c \
+       srcs/mlx/hook.c
 
 OBJS = $(SRCS:%.c=%.o)
 
