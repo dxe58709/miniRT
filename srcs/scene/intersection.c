@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:06:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/15 01:07:19 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/15 02:22:35 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ t_intersect *info)
 		info->distance = temp_info.distance;
 		info->position = temp_info.position;
 		info->normal = temp_info.normal;
+		if (object->type == ST_PLANE)
+			info->object_color = object->u_data.plane->rgb;
+		else if (object->type == ST_SPHERE)
+			info->object_color = object->u_data.sphere->rgb;
+		else if (object->type == ST_CYLINDER)
+			info->object_color = object->u_data.cylinder->rgb;
 		return (true);
 	}
 
@@ -71,6 +77,5 @@ t_intersect *info)
 			found = true;
 		current = current->next;
 	}
-	printf("[found]%s\n", found ? "true" : "false");
 	return (found);
 }

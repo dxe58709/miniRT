@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:06:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/15 01:19:43 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/15 02:16:34 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	draw(t_vars *vars)
 		{
 			camera.position = vars->scene->camera.position;
 			camera.direction = get_camera_direction(vars, x, y);
-            if (get_nearest_shape(vars->scene, &camera, &info))
+			if (get_nearest_shape(vars->scene, &camera, &info))
 			{
-            	color = info.object_color;
-				pixel_put(vars, x, y, encode_rgb(color));
+				color = info.object_color;
+				printf("Drawing Color: R=%f, G=%f, B=%f\n", color.red, color.green, color.blue);
 			}
 			else
 				init_rgb(&color, 0, 0, 255);
@@ -70,6 +70,5 @@ void	draw(t_vars *vars)
 		}
 		y++;
 	}
-	printf("Drawing color: R=%f, G=%f, B=%f\n", color.red, color.green, color.blue);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 }
