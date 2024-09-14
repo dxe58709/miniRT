@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_scene_utils.c                                 :+:      :+:    :+:   */
+/*   scene_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 18:54:02 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/12 18:54:03 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/09/14 22:03:17 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/09/14 22:24:37 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static bool	correct_fname(const char *str, const char *suffix)
 	return (false);
 }
 
-char	*file_name(char *rt)
+static char	*file_name(char *rt)
 {
 	char	*filename;
 
@@ -51,4 +51,31 @@ char	*file_name(char *rt)
 	else
 		filename = rt;
 	return (filename);
+}
+
+static void	check_file_directory(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_DIRECTORY);
+	if (0 <= fd)
+	{
+		close(fd);
+		ft_putstr_fd("Error: is a directory", 2);
+		ft_putchar_fd('\n', 2);
+		exit(1);
+	}
+}
+
+int	get_fd(char *rt)
+{
+	int		fd;
+
+	check_file_directory(rt);
+	if (!file_name(rt))
+		print_err_exit(ERR_FNAME);
+	fd = open(rt, O_RDWR);
+	if (fd < 0)
+		print_err_exit(ERR_FD);
+	return (fd);
 }

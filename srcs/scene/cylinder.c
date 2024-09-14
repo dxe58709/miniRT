@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.c                                            :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/19 17:52:16 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/13 22:21:29 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/09/14 22:27:47 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/09/14 22:31:08 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_light	init_light(char *line)
+t_cylinder	*set_cylinder(char *line)
 {
-	t_light		light;
+	t_cylinder	*cylinder;
 	char		**split;
 
+	cylinder = (t_cylinder *)ft_calloc(1, sizeof(t_cylinder));
+	if (!cylinder)
+		print_err_exit(ERR_MALLOC);
 	split = split_space(line);
-	split_count(split, 4, ERR_LIGHT_ARGC);
-	if (ft_memcmp(split[0], "L", 2))
+	split_count(split, 6, ERR_CYLINDER_ARGC);
+	if (ft_strcmp(split[0], "cy"))
 		print_err_exit(ERR_OBJ_TYPE);
-	light.position = generate_xyz_vec(split[1]);
-	light.ratio = check_atof_range(split[2], 0, 1);
-	light.rgb = process_rgb_str(split[3]);
+	cylinder->position = generate_xyz_vec(split[1]);
+	cylinder->direction = check_vector_range(split[2], -1, 1);
+	cylinder->radius = ft_atof(split[3]);
+	cylinder->height = ft_atof(split[4]);
+	cylinder->rgb = process_rgb_str(split[3]);
 	free_split(split);
-	return (light);
+	return (cylinder);
 }

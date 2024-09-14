@@ -1,53 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_scene.c                                       :+:      :+:    :+:   */
+/*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 17:04:29 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/12 19:09:25 by nsakanou         ###   ########.fr       */
+/*   Created: 2024/09/14 22:03:22 by nsakanou          #+#    #+#             */
+/*   Updated: 2024/09/14 22:06:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-char		*get_next_line(int fd);
-int			ft_strcmp(const char *s1, const char *s2);
 t_ambient	init_ambient(char *line);
 t_light		init_light(char *line);
 t_camera	init_camera(char *line);
 void		obj_list_addback(t_object **head, t_object *new_node);
 t_object	*obj_list_new(t_shape_type type, char *line);
-char		*file_name(char *rt);
+int			get_fd(char *rt);
 void		init_vars(t_vars *vars);
-
-static void	check_file_directory(char *file)
-{
-	int	fd;
-
-	fd = open(file, O_DIRECTORY);
-	if (0 <= fd)
-	{
-		close(fd);
-		ft_putstr_fd("Error: is a directory", 2);
-		ft_putchar_fd('\n', 2);
-		exit(1);
-	}
-}
-
-static int	get_fd(char *rt)
-{
-	int		fd;
-
-	check_file_directory(rt);
-	if (!file_name(rt))
-		print_err_exit(ERR_FNAME);
-	fd = open(rt, O_RDWR);
-	if (fd < 0)
-		print_err_exit(ERR_FD);
-	return (fd);
-}
+char		*get_next_line(int fd);
 
 static void	scene_setting(t_scene *scene, char *line)
 {
