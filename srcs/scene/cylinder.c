@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:27:47 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/15 12:39:31 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/15 15:45:30 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ bool	intersection_cylinder(const t_object *object, const t_ray *ray,
 		return (false);
 	cylinder = object->u_data.cylinder;
 	d = cy_discriminant(ray, cylinder);
+	printf("Cylinder radius: %f\n", cylinder->radius);
+    printf("Discriminant: %f\n", d.discrim);
+    printf("t1: %f, t2: %f\n", d.t1, d.t2);
 	if (d.t > 0)
 	{
 		if (info)

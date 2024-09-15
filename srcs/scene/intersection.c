@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:06:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/15 12:05:23 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/15 15:22:30 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ t_intersect *info)
 	found = found_intersection(object, ray, &temp_info);
 	if (found && temp_info.distance < info->distance)
 	{
+		printf("Intersection found with object type %d\n", object->type);
+		printf("Distance to intersection: %f\n", temp_info.distance);
+		printf("Intersection position: x: %f, y: %f, z: %f\n",
+			temp_info.position.x, temp_info.position.y, temp_info.position.z);
+		printf("Intersection normal: x: %f, y: %f, z: %f\n",
+			temp_info.normal.x, temp_info.normal.y, temp_info.normal.z);
 		info->distance = temp_info.distance;
 		info->position = temp_info.position;
 		info->normal = temp_info.normal;

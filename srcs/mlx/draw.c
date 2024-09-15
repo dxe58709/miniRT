@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:06:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/15 02:16:34 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/15 17:10:44 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,9 @@ void	draw(t_vars *vars)
 			if (get_nearest_shape(vars->scene, &camera, &info))
 			{
 				color = info.object_color;
-				printf("Drawing Color: R=%f, G=%f, B=%f\n", color.red, color.green, color.blue);
 			}
 			else
-				init_rgb(&color, 0, 0, 255);
+				init_rgb(&color, 0, 0, 0);
 			// raytrace(vars, &camera, &color);
 			pixel_put(vars, x, y, encode_rgb(color));
 			x++;
