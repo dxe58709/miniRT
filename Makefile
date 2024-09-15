@@ -6,11 +6,11 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/22 20:39:05 by nsakanou          #+#    #+#              #
-#    Updated: 2024/09/14 23:53:09 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/09/15 18:41:21 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minirt
+NAME = miniRT
 
 LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
