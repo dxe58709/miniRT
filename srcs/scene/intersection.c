@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:06:31 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/15 02:22:35 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/15 12:05:23 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ t_intersect *info)
 			info->object_color = object->u_data.cylinder->rgb;
 		return (true);
 	}
-
 	return (false);
 }
 

@@ -6,13 +6,11 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:27:47 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/14 23:03:33 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/15 12:39:31 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-void	squrt_discriminant(t_discrim *d);
 
 t_cylinder	*set_cylinder(char *line)
 {
@@ -30,9 +28,23 @@ t_cylinder	*set_cylinder(char *line)
 	cylinder->direction = check_vector_range(split[2], -1, 1);
 	cylinder->radius = ft_atof(split[3]);
 	cylinder->height = ft_atof(split[4]);
-	cylinder->rgb = process_rgb_str(split[3]);
+	cylinder->rgb = process_rgb_str(split[5]);
 	free_split(split);
 	return (cylinder);
+}
+
+void	cy_squrt_discriminant(t_discrim *d)
+{
+	double	squrt_discrim;
+
+	squrt_discrim = sqrt(d->discrim);
+	d->t1 = (-d->b - squrt_discrim) / (2 * d->a);
+	d->t2 = (-d->b + squrt_discrim) / (2 * d->a);
+	d->t = -1.0f;
+	if (d->t1 > 0 && (d->t < 0 || d->t1 < d->t))
+		d->t = d->t1;
+	if (d->t2 > 0 && (d->t < 0 || d->t2 < d->t))
+		d->t = d->t2;
 }
 
 static t_discrim	cy_discriminant(const t_ray *ray, const t_cylinder *cy)
@@ -50,7 +62,8 @@ static t_discrim	cy_discriminant(const t_ray *ray, const t_cylinder *cy)
 		- pow(cy->radius, 2);
 	d.discrim = d.b * d.b - 4 * d.a * d.c;
 	d.t = -1.0f;
-	squrt_discriminant(&d);
+	if (d.discrim >= 0)
+		cy_squrt_discriminant(&d);
 	d.m = inner_vec(s_p, cy->direction)
 		+ d.t * inner_vec(ray->direction, cy->direction);
 	if (d.m < -cy->height / 2 || d.m > cy->height / 2)
