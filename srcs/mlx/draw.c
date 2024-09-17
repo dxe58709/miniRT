@@ -6,14 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:06:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/15 18:47:38 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:02:36 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 int		encode_rgb(t_rgb rgb);
-void	color_mult(t_rgb *a, t_rgb b);
 bool	get_nearest_shape(const t_scene *scene, const t_ray *ray,
 			t_intersect *info);
 

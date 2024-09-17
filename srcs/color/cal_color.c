@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 22:11:24 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/14 22:13:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:03:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,24 @@ void	set_clamp_color(t_rgb *color)
 	color->blue = clamp(color->blue, 0.0, 1.0);
 }
 
-void	color_add(t_rgb *a, t_rgb b)
+t_rgb	color_add(t_rgb *a, t_rgb b)
 {
-	a->red += b.red;
-	a->green += b.green;
-	a->blue += b.blue;
+	t_rgb	result;
+
+	result.red = a->red + b.red;
+	result.green = a->green + b.green;
+	result.blue = a->blue + b.blue;
+	return (result);
 }
 
-void	color_mult(t_rgb *a, t_rgb b)
+t_rgb	color_mult(t_rgb *a, t_rgb b)
 {
-	a->red *= b.red;
-	a->green *= b.green;
-	a->blue *= b.blue;
+	t_rgb	result;
+
+	result.red = a->red * b.red;
+	result.green = a->green * b.green;
+	result.blue = a->blue * b.blue;
+	return (result);
 }
 
 void	color_mult_scalar(t_rgb *a, double b)
