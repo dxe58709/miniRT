@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 21:46:35 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/09/15 00:31:06 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/09/19 00:24:10 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_discrim {
 
 typedef struct s_object {
 	t_shape_type	type;
+	//t_ref			ref;
 	union
 	{
 		t_plane		*plane;
